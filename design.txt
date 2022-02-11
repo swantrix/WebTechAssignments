@@ -1,0 +1,7 @@
+Pages:
+
+1 Main page
+1.2 Menu
+1.3 Reserveer
+1.4 Contact
+1.5 About
