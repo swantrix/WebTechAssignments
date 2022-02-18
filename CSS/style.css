@@ -6,6 +6,7 @@ body {
     
 }
 
+<<<<<<< HEAD
 header{
     /* need to change padding to relative,  */
     padding: 10px;
@@ -33,6 +34,73 @@ div {
 }
 a:link, a:visited {
     color: #38488f;
+=======
+.navigationBar{
+    /* need to change padding to relative,  */
+    padding: 5px;
+    width: auto;
+    text-align: left;
+    font-size: 2.5em;
+    background-color: lightsteelblue;
+    display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+}
+
+<<<<<<< HEAD
+img.left{
+    float:left;
+    padding:5px;
+    width:10%;
+    height:10%
+}
+
+.footer{
+    background-color: lightsteelblue;
+    display:flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+}
+
+.footer_element{
+    text-align:left;
+    color:black;
+    padding:5px;
+}
+
+p.footer_list{
+    padding:5px;
+    margin:0;
+}
+
+p.footer_list-about{
+    padding: 5px 0px;
+    margin:0;
+}
+
+.reservation_form{
+    padding:20px 30px;
+=======
+.navigationBar_logo{
+
+}
+
+footer{
+    background-color: lightsteelblue;
+}
+
+.story_text{
+    margin: 0;
+}
+
+.footer_element_left{
+    float:left;
+>>>>>>> afe8932a924dbdd1400d1a1f4ea56e177efd31f2
+}
+
+a:link, a:visited {
+    color: black;
+>>>>>>> ca20d85373895edf373db6bb6f2dc67d56f8d675
     text-decoration: none;
 }
 @media (max-width: 700px) {
@@ -41,6 +109,7 @@ a:link, a:visited {
         width: auto;
     }
 }
+<<<<<<< HEAD
 
 table.menu {
     width: 30%;
@@ -70,3 +139,5 @@ table.menu {
     color: #cacaca;
     text-decoration: underline;
 }
+=======
+>>>>>>> ca20d85373895edf373db6bb6f2dc67d56f8d675
