@@ -5,35 +5,6 @@ body {
     font-family: sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial;
 }
 
-<<<<<<< HEAD
-header{
-    /* need to change padding to relative,  */
-    padding: 10px;
-    text-align: left;
-    font-size: 1.5em;
-    background-color: lightsteelblue;
-}
-
-footer{
-    background-color: lightsteelblue;
-}
-
-.footer_element{
-    float: left
-    
-}
-
-div {
-    width: 600px;
-    margin: 5em auto;
-    padding: 2em;
-    background-color: #fdfdff;
-    border-radius: 0.5em;
-    box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
-}
-a:link, a:visited {
-    color: #38488f;
-=======
 .navigationBar{
     /* need to change padding to relative,  */
     padding: 5px;
@@ -90,14 +61,12 @@ footer{
 .story_text{
     margin: 0;
 }
-
 .footer_element_left{
     float:left;
 }
 
 a:link, a:visited {
     color: black;
->>>>>>> ca20d85373895edf373db6bb6f2dc67d56f8d675
     text-decoration: none;
 }
 
@@ -130,7 +99,6 @@ section.aboutInfo_openingHours li{
         width: 40%;
     }
 }
-<<<<<<< HEAD
 
 table.menu {
     width: 30%;
@@ -160,5 +128,3 @@ table.menu {
     color: #cacaca;
     text-decoration: underline;
 }
-=======
->>>>>>> ca20d85373895edf373db6bb6f2dc67d56f8d675
