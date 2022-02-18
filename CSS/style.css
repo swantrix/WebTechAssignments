@@ -6,7 +6,7 @@ body {
     
 }
 
-.navigation{
+.navigationBar{
     /* need to change padding to relative,  */
     padding: 5px;
     width: auto;
@@ -18,10 +18,16 @@ body {
         align-items: center;
 }
 
+.navigationBar_logo{
 
+}
 
 footer{
     background-color: lightsteelblue;
+}
+
+.story_text{
+    margin: 0;
 }
 
 .footer_element_left{
