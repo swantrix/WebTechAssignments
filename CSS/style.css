@@ -3,7 +3,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial;
-    
 }
 
 <<<<<<< HEAD
@@ -47,7 +46,6 @@ a:link, a:visited {
         align-items: center;
 }
 
-<<<<<<< HEAD
 img.left{
     float:left;
     padding:5px;
@@ -78,11 +76,11 @@ p.footer_list-about{
     margin:0;
 }
 
-.reservation_form{
-    padding:20px 30px;
-=======
-.navigationBar_logo{
+.reservation_form {
+    padding: 20px 30px;
+}
 
+.navigationBar_logo{
 }
 
 footer{
@@ -95,7 +93,6 @@ footer{
 
 .footer_element_left{
     float:left;
->>>>>>> afe8932a924dbdd1400d1a1f4ea56e177efd31f2
 }
 
 a:link, a:visited {
@@ -103,10 +100,34 @@ a:link, a:visited {
 >>>>>>> ca20d85373895edf373db6bb6f2dc67d56f8d675
     text-decoration: none;
 }
+
+
+section.aboutInfo_contactInfo td{
+    text-align: center;
+}
+
+section.aboutInfo_openingHours li{
+    list-style-type: none;
+}
+
+
+/* for small screens */
 @media (max-width: 700px) {
     div {
         margin: 0 auto;
         width: auto;
+    }
+
+    section.aboutInfo_contactInfo table{
+        width:90%
+    }
+
+}
+
+/* for large screens */
+@media (min-width: 700px){
+    section.aboutInfo_contactInfo table{
+        width: 40%;
     }
 }
 <<<<<<< HEAD
