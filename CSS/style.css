@@ -41,3 +41,32 @@ a:link, a:visited {
         width: auto;
     }
 }
+
+table.menu {
+    width: 30%;
+    background-color: rgb(70, 70, 70);
+}
+.title{
+    color: #d85656;
+    background-color: rgb(116, 116, 116);
+    font-size: 24px;
+}
+.section{
+    color: #cacaca;
+    text-decoration-line: underline;
+    font-size: 18px;
+    text-decoration: wavy;
+}
+.name{
+    font-size: 16px;
+    color: #d85656;
+}
+.ingredients{
+    font-size: 12px;
+    color: #adadad;
+}
+.price{
+    font-size: 18px;
+    color: #cacaca;
+    text-decoration: underline;
+}
