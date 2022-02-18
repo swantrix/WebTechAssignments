@@ -18,18 +18,42 @@ body {
         align-items: center;
 }
 
-
-
-footer{
-    background-color: lightsteelblue;
+img.left{
+    float:left;
+    padding:5px;
+    width:10%;
+    height:10%
 }
 
-.footer_element_left{
-    float:left;
+.footer{
+    background-color: lightsteelblue;
+    display:flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+}
+
+.footer_element{
+    text-align:left;
+    color:black;
+    padding:5px;
+}
+
+p.footer_list{
+    padding:5px;
+    margin:0;
+}
+
+p.footer_list-about{
+    padding: 5px 0px;
+    margin:0;
+}
+
+.reservation_form{
+    padding:20px 30px;
 }
 
 a:link, a:visited {
-    color: #38488f;
+    color: black;
     text-decoration: none;
 }
 @media (max-width: 700px) {
