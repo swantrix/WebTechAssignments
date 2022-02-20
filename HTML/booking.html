@@ -19,17 +19,17 @@
         <h1 class="reservation_form">Reservation form</h1>
         <form class="reservation_form">
             <h3>Reservation information</h3>
-            <label for="date">Desired reservation date:</label>
+            <label for="reservation_date">Desired reservation date:</label>
             <input type="date" id="reservation_date" name="reservation_date" required> <br>
-            <label for="persons">Number of persons:</label>
+            <label for="number_of_persons">Number of persons:</label>
             <input type="number" id="number_of_persons" name="number_of_persons" min="1" max="10" required> <br>
             <h3>Personal information</h3>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Last name, First name" required> <br>
-            <label for="email address">Email address:</label>
-            <input type="email" id="email" name="email address" required>
-            <label for="phone number">Phone number: +31 (0)6</label>
-            <input type="number"
+            <label for="email_address">Email address:</label>
+            <input type="email" id="email_address" name="email_address" required> <br>
+            <label for="phone_number">Phone number: +31 (0)6</label>
+            <input type="tel" id="phone_number" name="phone_number" pattern="[0-9]{8}" required> <br>
             <input type="submit" value="Submit">
             <input type="reset">    
         </form>
