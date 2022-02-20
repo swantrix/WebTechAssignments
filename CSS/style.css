@@ -31,6 +31,10 @@ img.Footer_ContactInfo_Image{
     height:10%
 }
 
+p.Footer_ContactInfo-List{
+    padding:5px;
+}
+
 .Footer{
     background-color: lightsteelblue;
     display:flex;
@@ -64,6 +68,7 @@ a.Footer_OurStory-List{
 }
 
 a:link, a:visited {
+    color:black;
     text-decoration: none;
 }
 
@@ -93,7 +98,7 @@ section.aboutInfo_openingHours li{
 /* for large screens */
 @media (min-width: 700px){
     section.aboutInfo_contactInfo table{
-        width: 40%;
+        width: 50%;
     }
 }
 
