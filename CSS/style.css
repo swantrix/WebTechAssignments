@@ -5,22 +5,10 @@ body {
     font-family: sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial;
 }
 
-<<<<<<< HEAD
-header{
-    /* need to change padding to relative,  */
-    padding: 10px;
-    text-align: left;
+.NavigationHeader{
+    display: flex;
     font-size: 1.5em;
     background-color: lightsteelblue;
-}
-
-footer{
-    background-color: lightsteelblue;
-}
-
-.footer_element{
-    float: left
-    
 }
 
 div {
@@ -31,73 +19,51 @@ div {
     border-radius: 0.5em;
     box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
 }
+
 a:link, a:visited {
     color: #38488f;
-=======
-.navigationBar{
-    /* need to change padding to relative,  */
-    padding: 5px;
-    width: auto;
-    text-align: left;
-    font-size: 2.5em;
-    background-color: lightsteelblue;
-    display: flex;
-        justify-content: space-evenly;
-        align-items: center;
 }
 
-img.left{
+img.Footer_ContactInfo_Image{
     float:left;
     padding:5px;
     width:10%;
     height:10%
 }
 
-.footer{
+.Footer{
     background-color: lightsteelblue;
     display:flex;
         justify-content: space-evenly;
         align-items: flex-start;
 }
 
-.footer_element{
+.Footer_ContactInfo, .Footer_ContactInfo{
     text-align:left;
     color:black;
     padding:5px;
 }
 
-p.footer_list{
+p.Footer_OurStory-List{
     padding:5px;
     margin:0;
 }
 
-p.footer_list-about{
+a.Footer_OurStory-List{
     padding: 5px 0px;
     margin:0;
-}
-
-.reservation_form {
-    padding: 20px 30px;
-}
-
-.navigationBar_logo{
-}
-
-footer{
-    background-color: lightsteelblue;
+    color:black;
 }
 
 .story_text{
     margin: 0;
 }
 
-.footer_element_left{
-    float:left;
+.reservation_form {
+    padding: 20px 30px;
 }
 
 a:link, a:visited {
-    color: black;
->>>>>>> ca20d85373895edf373db6bb6f2dc67d56f8d675
     text-decoration: none;
 }
 
@@ -130,7 +96,6 @@ section.aboutInfo_openingHours li{
         width: 40%;
     }
 }
-<<<<<<< HEAD
 
 table.menu {
     width: 30%;
@@ -160,5 +125,4 @@ table.menu {
     color: #cacaca;
     text-decoration: underline;
 }
-=======
->>>>>>> ca20d85373895edf373db6bb6f2dc67d56f8d675
+
