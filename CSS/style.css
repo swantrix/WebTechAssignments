@@ -7,17 +7,16 @@ body {
 
 .NavigationHeader{
     display: flex;
+    align-items: center;
     font-size: 1.5em;
     background-color: lightsteelblue;
+    justify-content: stretch;
 }
 
-div {
-    width: 600px;
-    margin: 5em auto;
-    padding: 2em;
-    background-color: #fdfdff;
-    border-radius: 0.5em;
-    box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+.NH_TextLinks{
+    display: flex;
+    align-items: center;
+    flex-grow: 3;
 }
 
 a:link, a:visited {
