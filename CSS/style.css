@@ -7,6 +7,7 @@ body {
 
 .NavigationHeader{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     font-size: 1.5em;
     background-color: lightsteelblue;
@@ -14,13 +15,20 @@ body {
 }
 
 .NH_TextLinks{
+    font-size: 1.5em;
+    margin: 0 10vw;
     display: flex;
-    align-items: center;
-    flex-grow: 3;
+    justify-content: space-between;
+    flex-grow: 2;
+}
+.NH_TextLinks a{
+    background-color: steelblue;
+    padding: 0.4em;
+    border-radius: 0.3em;
+    color: whitesmoke;
 }
 
 a:link, a:visited {
-    color: #38488f;
 }
 
 img.Footer_ContactInfo-Image{
@@ -67,7 +75,6 @@ a.Footer_OurStory-List{
 }
 
 a:link, a:visited {
-    color:black;
     text-decoration: none;
 }
 
