@@ -2,7 +2,8 @@ body {
     background-color: ghostwhite;
     margin: 0;
     padding: 0;
-    font-family: sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial;
+    font-family: Helvetica, Arial, sans-serif;
+
 }
 
 .NavigationHeader{
@@ -15,17 +16,23 @@ body {
 }
 
 .NH_TextLinks{
-    font-size: 1.5em;
-    margin: 0 10vw;
+    font-size: 3.2vw;
+    margin: 0 5vw 0 5vw;
     display: flex;
     justify-content: space-between;
     flex-grow: 2;
 }
+@media (max-width: 1200px) {
+    /*display een toggle button met drop down menu*/
+    /*display links niet meer, behalve als drop down menu is clicked. maar dan display flex als column en plaats onder logo*/
+
+}
+
 .NH_TextLinks a{
-    background-color: steelblue;
+    background-color: #82a6da;
     padding: 0.4em;
-    border-radius: 0.3em;
-    color: whitesmoke;
+    border-radius: 0.2em;
+    color: #ffffff;
 }
 
 a:link, a:visited {
