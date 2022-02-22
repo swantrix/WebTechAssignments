@@ -2,30 +2,72 @@ body {
     background-color: ghostwhite;
     margin: 0;
     padding: 0;
-    font-family: sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial;
+    font-family: Helvetica, Arial, sans-serif;
+
 }
 
-.navigationBar{
-    /* need to change padding to relative,  */
-    padding: 5px;
-    width: auto;
-    text-align: left;
-    font-size: 2.5em;
+.NavigationHeader{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 1.5em;
     background-color: lightsteelblue;
+    justify-content: stretch;
+}
+
+.NH_TextLinks{
+    font-size: 1.8em;
     display: flex;
         justify-content: space-evenly;
         align-items: center;
     z-index: 9;
+    justify-content: flex-end;
+    flex-grow: 2;
+    margin-right: 10px;
 }
 
-img.left{
+.NH_TextLinks a{ /*The text-links in the header*/
+    padding: 2vw;
+    border-radius: 0.2em;
+    color: #131313;
+    font-weight: bold;
+}
+
+.NH_TextLinks a:hover{
+    background-color: #82a6da;
+}
+
+@media (max-width: 1300px) {
+    /*makes header vertical on small screens*/
+    body .NavigationHeader{
+        flex-flow: column;
+    }
+    body .NH_TextLinks{
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+    }
+
+    body .NH_TextLinks a{ /*The text-links in the header*/
+        margin: 5px 0px 5px 0;
+    }
+}
+
+a:link, a:visited {
+}
+
+img.Footer_ContactInfo-Image{
     float:left;
     padding:5px;
     width:10%;
     height:10%
 }
 
-.footer{
+p.Footer_ContactInfo-List{
+    padding:5px;
+}
+
+.Footer{
     background-color: lightsteelblue;
     display:flex;
         justify-content: space-evenly;
@@ -33,42 +75,32 @@ img.left{
     z-index: 9;
 }
 
-.footer_element{
+.Footer_ContactInfo, .Footer_ContactInfo{
     text-align:left;
     color:black;
     padding:5px;
 }
 
-p.footer_list{
+p.Footer_OurStory-List{
     padding:5px;
     margin:0;
 }
 
-p.footer_list-about{
+a.Footer_OurStory-List{
     padding: 5px 0px;
     margin:0;
+    color:black;
+}
+
+.story_text{
+    margin: 0;
 }
 
 .reservation_form {
     padding: 20px 30px;
 }
 
-.navigationBar_logo{
-}
-
-footer{
-    background-color: lightsteelblue;
-}
-
-.story_text{
-    margin: 0;
-}
-.footer_element_left{
-    float:left;
-}
-
 a:link, a:visited {
-    color: black;
     text-decoration: none;
 }
 
@@ -82,7 +114,7 @@ section.aboutInfo_openingHours li{
 }
 
 
-/* for small screens */
+/* AboutInfo for small screens */
 @media (max-width: 700px) {
     div {
         margin: 0 auto;
@@ -95,10 +127,10 @@ section.aboutInfo_openingHours li{
 
 }
 
-/* for large screens */
+/* AboutInfo for large screens */
 @media (min-width: 700px){
     section.aboutInfo_contactInfo table{
-        width: 40%;
+        width: 50%;
     }
 }
 .backgroundcontainer{
@@ -141,3 +173,4 @@ table.menu {
     text-decoration: underline;
     font-weight: bold;
 }
+
