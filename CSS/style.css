@@ -16,23 +16,39 @@ body {
 }
 
 .NH_TextLinks{
-    font-size: 3.2vw;
-    margin: 0 5vw 0 5vw;
+    font-size: 1.8em;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-grow: 2;
+    margin-right: 10px;
 }
-@media (max-width: 1200px) {
+
+.NH_TextLinks a{ /*The text-links in the header*/
+    padding: 2vw;
+    border-radius: 0.2em;
+    color: #131313;
+    font-weight: bold;
+}
+
+.NH_TextLinks a:hover{ /*The text-links in the header*/
+    background-color: #82a6da;
+}
+
+@media (max-width: 1300px) {
     /*display een toggle button met drop down menu*/
     /*display links niet meer, behalve als drop down menu is clicked. maar dan display flex als column en plaats onder logo*/
+    body .NavigationHeader{
+        flex-flow: column;
+    }
+    body .NH_TextLinks{
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+    }
 
-}
-
-.NH_TextLinks a{
-    background-color: #82a6da;
-    padding: 0.4em;
-    border-radius: 0.2em;
-    color: #ffffff;
+    body .NH_TextLinks a{ /*The text-links in the header*/
+        margin: 5px 0px 5px 0;
+    }
 }
 
 a:link, a:visited {
