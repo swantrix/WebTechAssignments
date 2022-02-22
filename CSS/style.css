@@ -15,6 +15,7 @@ body {
     display: flex;
         justify-content: space-evenly;
         align-items: center;
+    z-index: 9;
 }
 
 img.left{
@@ -29,6 +30,7 @@ img.left{
     display:flex;
         justify-content: space-evenly;
         align-items: flex-start;
+    z-index: 9;
 }
 
 .footer_element{
@@ -99,32 +101,43 @@ section.aboutInfo_openingHours li{
         width: 40%;
     }
 }
-
+.backgroundcontainer{
+    overflow: hidden;
+    background: url("../Images/background.jpg") repeat-y;
+    height: 1500px;
+    width: 5000px;
+    z-index: 8;
+}
 table.menu {
-    width: 30%;
-    background-color: rgb(70, 70, 70);
+    width: 50%;
+    background-color: lightsteelblue;
+    position: absolute;
+    left: 25%;
+    right: 25%;
 }
 .title{
-    color: #d85656;
-    background-color: rgb(116, 116, 116);
+    color: #ee6c4d;
+    background-color: #3d5a80;
     font-size: 24px;
 }
 .section{
-    color: #cacaca;
+    color: #293241;
     text-decoration-line: underline;
-    font-size: 18px;
-    text-decoration: wavy;
+    font-weight: bold;
+    font-size: 20px;
 }
 .name{
     font-size: 16px;
-    color: #d85656;
+    color: #ee6c4d;
+    font-weight: bold;
 }
 .ingredients{
     font-size: 12px;
-    color: #adadad;
+    color: #293241;
 }
 .price{
     font-size: 18px;
-    color: #cacaca;
+    color: #ee6c4d;
     text-decoration: underline;
+    font-weight: bold;
 }
