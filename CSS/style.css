@@ -30,13 +30,12 @@ body {
     font-weight: bold;
 }
 
-.NH_TextLinks a:hover{ /*The text-links in the header*/
+.NH_TextLinks a:hover{
     background-color: #82a6da;
 }
 
 @media (max-width: 1300px) {
-    /*display een toggle button met drop down menu*/
-    /*display links niet meer, behalve als drop down menu is clicked. maar dan display flex als column en plaats onder logo*/
+    /*makes header vertical on small screens*/
     body .NavigationHeader{
         flex-flow: column;
     }
@@ -111,7 +110,7 @@ section.aboutInfo_openingHours li{
 }
 
 
-/* for small screens */
+/* AboutInfo for small screens */
 @media (max-width: 700px) {
     div {
         margin: 0 auto;
@@ -124,7 +123,7 @@ section.aboutInfo_openingHours li{
 
 }
 
-/* for large screens */
+/* AboutInfo for large screens */
 @media (min-width: 700px){
     section.aboutInfo_contactInfo table{
         width: 50%;
