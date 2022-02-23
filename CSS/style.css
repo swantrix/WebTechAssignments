@@ -1,9 +1,14 @@
+html, body {
+    height:100%;
+}
+
 body {
     background-color: ghostwhite;
     margin: 0;
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .NavigationHeader{
@@ -13,6 +18,10 @@ body {
     font-size: 1.5em;
     background-color: lightsteelblue;
     justify-content: stretch;
+}
+
+.content{
+    flex: 1 0 auto;
 }
 
 .NH_TextLinks{
@@ -68,6 +77,7 @@ p.Footer_ContactInfo-List{
 }
 
 .Footer{
+    flex-shrink:0;
     background-color: lightsteelblue;
     display:flex;
         justify-content: space-evenly;
