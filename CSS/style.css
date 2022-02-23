@@ -71,7 +71,6 @@ p.Footer_ContactInfo-List{
     display:flex;
         justify-content: space-evenly;
         align-items: flex-start;
-    z-index: 9;
 }
 
 .Footer_ContactInfo, .Footer_ContactInfo{
@@ -91,18 +90,24 @@ a.Footer_OurStory-List{
     color:black;
 }
 
-.story_text{
-    margin: 0;
+.storyText{
+    padding: 2em;
+    background-color:white;
+    text-align: center;
 }
 
-.reservation_form {
+.reservationForm {
+    padding: 2em;
+    background-color:white;
+}
+
+.aboutInfo {
     padding: 20px 30px;
 }
 
 a:link, a:visited {
     text-decoration: none;
 }
-
 
 section.aboutInfo_contactInfo td{
     text-align: center;
@@ -111,7 +116,6 @@ section.aboutInfo_contactInfo td{
 section.aboutInfo_openingHours li{
     list-style-type: none;
 }
-
 
 /* AboutInfo for small screens */
 @media (max-width: 700px) {
@@ -130,6 +134,22 @@ section.aboutInfo_openingHours li{
 @media (min-width: 700px){
     section.aboutInfo_contactInfo table{
         width: 50%;
+    }
+
+    .reservationForm{
+        width:75%;
+        margin:auto;
+        margin-top:1.5%;
+        margin-bottom:1.5%;
+        border-radius:1em;
+    }
+
+    .storyText{
+        width:75%;
+        margin:auto;
+        margin-top:1.5%;
+        margin-bottom:1.5%;
+        border-radius:1em;
     }
 }
 .backgroundcontainer{
