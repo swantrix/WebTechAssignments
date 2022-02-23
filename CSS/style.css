@@ -47,7 +47,7 @@ body {
     background-color: white;
 }
 
-div.Main_Content {
+div.content_text {
     display: flex;
     flex-flow: column;
     align-items: center;
