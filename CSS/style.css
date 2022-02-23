@@ -23,10 +23,8 @@ body {
 .NH_TextLinks{
     font-size: 1.8em;
     display: flex;
-        justify-content: space-evenly;
+        justify-content: flex-end;
         align-items: center;
-    z-index: 9;
-    justify-content: flex-end;
     flex-grow: 2;
     margin-right: 10px;
 }
@@ -44,7 +42,8 @@ body {
 
 .content{
     flex: 1 0 auto;
-    background-image: url("../Images/background.jpg");
+    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+            url("../Images/background.jpg");
     background-color: white;
 }
 
