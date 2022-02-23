@@ -37,6 +37,11 @@ body {
     background-color: #82a6da;
 }
 
+.content{
+    background-image:url(../Images/background.jpg);
+    background-color:white;
+}
+
 @media (max-width: 1300px) {
     /*makes header vertical on small screens*/
     body .NavigationHeader{
@@ -51,8 +56,6 @@ body {
     body .NH_TextLinks a{ /*The text-links in the header*/
         margin: 5px 0px 5px 0;
     }
-}
-a:link, a:visited {
 }
 
 img.Footer_ContactInfo-Image{
