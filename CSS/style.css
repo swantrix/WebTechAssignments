@@ -112,7 +112,8 @@ a.Footer_OurStory-List{
 }
 
 .aboutInfo {
-    padding: 20px 30px;
+    padding:2em;
+    background-color:white;
 }
 
 a:link, a:visited {
@@ -156,6 +157,14 @@ section.aboutInfo_openingHours li{
     }
 
     .storyText{
+        width:75%;
+        margin:auto;
+        margin-top:1.5%;
+        margin-bottom:1.5%;
+        border-radius:1em;
+    }
+
+    .aboutInfo{
         width:75%;
         margin:auto;
         margin-top:1.5%;
