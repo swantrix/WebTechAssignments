@@ -1,14 +1,9 @@
-html, body {
-    height:100%;
-}
-
 body {
     background-color: ghostwhite;
     margin: 0;
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
+
 }
 
 .NavigationHeader{
@@ -42,12 +37,6 @@ body {
     background-color: #82a6da;
 }
 
-.content{
-    flex: 1 0 auto;
-    background-image: url("../Images/background.jpg");
-    background-color: white;
-}
-
 @media (max-width: 1300px) {
     /*makes header vertical on small screens*/
     body .NavigationHeader{
@@ -63,20 +52,7 @@ body {
         margin: 5px 0px 5px 0;
     }
 }
-
-.Footer{
-    flex-shrink:0;
-    background-color: lightsteelblue;
-    display:flex;
-        justify-content: space-evenly;
-        align-items: flex-start;
-    z-index: 9;
-}
-
-.Footer_ContactInfo{
-    text-align:left;
-    color:black;
-    padding:5px;
+a:link, a:visited {
 }
 
 img.Footer_ContactInfo-Image{
@@ -87,6 +63,20 @@ img.Footer_ContactInfo-Image{
 }
 
 p.Footer_ContactInfo-List{
+    padding:5px;
+}
+
+.Footer{
+    background-color: lightsteelblue;
+    display:flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+    z-index: 9;
+}
+
+.Footer_ContactInfo, .Footer_ContactInfo{
+    text-align:left;
+    color:black;
     padding:5px;
 }
 
@@ -105,17 +95,12 @@ a.Footer_OurStory-List{
     margin: 0;
 }
 
-.reservationForm {
-    padding: 20px 30px;
-}
-
-.aboutInfo {
+.reservation_form {
     padding: 20px 30px;
 }
 
 a:link, a:visited {
     text-decoration: none;
-    color:black;
 }
 
 
@@ -150,9 +135,15 @@ section.aboutInfo_openingHours li{
 .backgroundcontainer{
     overflow: hidden;
     background: url("../Images/background.jpg") repeat-y;
-    height: 1500px;
-    width: 5000px;
+    width: auto;
+    height: 2000px;
     z-index: 8;
+}
+#menu--links{
+    background-color: #3d5a80;
+    color: #cf8e58;
+    border-radius: 25px;
+    
 }
 table.menu {
     width: 50%;
@@ -162,7 +153,7 @@ table.menu {
     right: 25%;
 }
 .title{
-    color: #ee6c4d;
+    color: #cf8e58;
     background-color: #3d5a80;
     font-size: 24px;
 }
@@ -174,7 +165,7 @@ table.menu {
 }
 .name{
     font-size: 16px;
-    color: #ee6c4d;
+    color: #f1795b;
     font-weight: bold;
 }
 .ingredients{
@@ -183,7 +174,7 @@ table.menu {
 }
 .price{
     font-size: 18px;
-    color: #ee6c4d;
+    color: #f1795b;
     text-decoration: underline;
     font-weight: bold;
 }
