@@ -48,7 +48,6 @@ body {
 div.content--menu{
     /*temporary fix*/
     display: flex;
-    flex: 1 0 auto;
     flex-flow: column;
     background-image:url(../Images/background.jpg);
     background-repeat: repeat;
@@ -180,8 +179,8 @@ section.aboutInfo_openingHours li{
     font-size: 70%;
 }
 table.menu {
-    width: 50%;
     background-color: lightsteelblue;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -190,10 +189,10 @@ table.menu {
     color: #cf8e58;
     background-color: #3d5a80;
     font-size: 2em;
-    width: 50%;
     margin-left: auto;
     margin-right: auto;
-}
+    width: 50%;
+    }
 .links{
     background-color: lightsteelblue;
     color: #cf8e58;
@@ -223,4 +222,3 @@ table.menu {
     text-decoration: underline;
     font-weight: bold;
 }
-
