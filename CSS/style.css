@@ -7,8 +7,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
+    /*removed seemingly unnecessary flex property*/ 
 }
 
 .NavigationHeader{
@@ -42,11 +41,18 @@ body {
 
 .content{
     display: flex;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     background-image:url(../Images/background.jpg);
     background-color:white;
 }
-
+div.content--menu{
+    /*temporary fix*/
+    display: flex;
+    flex: 1 0 auto;
+    flex-flow: column;
+    background-image:url(../Images/background.jpg);
+    background-repeat: repeat;
+}
 div.content{
     display: flex;
     flex-flow: column;
@@ -167,26 +173,26 @@ section.aboutInfo_openingHours li{
         border-radius:1em;
     }
 }
-.backgroundcontainer{
-    overflow: hidden;
-    background: url("../Images/background.jpg");
-    background-repeat: repeat;
-    width: 5000px;
-    height: 1820px;
-    z-index: 8;
+#linkbox{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    font-size: 70%;
 }
 table.menu {
     width: 50%;
     background-color: lightsteelblue;
-    position: absolute;
-    left: 25%;
-    right: 25%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .title{
+    text-align: center;
     color: #cf8e58;
     background-color: #3d5a80;
-    font-size: 24px;
-    padding-top: 25px;
+    font-size: 2em;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .links{
     background-color: lightsteelblue;
