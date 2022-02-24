@@ -46,23 +46,25 @@ body {
     background-image:url(../Images/background.jpg);
     background-color:white;
 }
-div.content--menu{
+
+#Content_Menu{
     /*temporary fix*/
     display: flex;
     flex-flow: column;
     background-image:url(../Images/background.jpg);
     background-repeat: repeat;
 }
-div.content{
+
+#Content_Main{
     display: flex;
     flex-flow: column;
 }
 
-div.content h1, p{
-    max-width: 80%;
+div.content #MainHeader, p{
+    max-width: 75%;
 }
 
-div.content h1{
+div.content #MainHeader{
     font-size: 10vw;
     width: 60%;
 }
