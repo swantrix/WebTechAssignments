@@ -169,16 +169,11 @@ section.aboutInfo_openingHours li{
 }
 .backgroundcontainer{
     overflow: hidden;
-    background: url("../Images/background.jpg") repeat-y;
-    width: auto;
-    height: 2000px;
+    background: url("../Images/background.jpg");
+    background-repeat: repeat;
+    width: 5000px;
+    height: 1820px;
     z-index: 8;
-}
-#menu--links{
-    background-color: #3d5a80;
-    color: #cf8e58;
-    border-radius: 25px;
-
 }
 table.menu {
     width: 50%;
@@ -191,6 +186,15 @@ table.menu {
     color: #cf8e58;
     background-color: #3d5a80;
     font-size: 24px;
+    padding-top: 25px;
+}
+.links{
+    background-color: lightsteelblue;
+    color: #cf8e58;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 .section{
     color: #293241;
