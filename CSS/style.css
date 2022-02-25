@@ -42,17 +42,11 @@ body {
 
 .content{
     display: flex;
+    flex-flow: column;
     flex: 1 0 auto;
     background-image:url(../Images/background.jpg);
     background-color:white;
-}
-
-#Content_Menu{
-    /*temporary fix*/
-    display: flex;
-    flex-flow: column;
-    background-image:url(../Images/background.jpg);
-    background-repeat: repeat;
+    background-repeat: repeat;    
 }
 
 #Content_Main{
@@ -100,7 +94,7 @@ p.Footer_ContactInfo-List{
         align-items: flex-start;
 }
 
-.Footer_ContactInfo, .Footer_ContactInfo{
+.Footer_ContactInfo{
     text-align:left;
     color:black;
     padding:5px;
@@ -123,23 +117,26 @@ a.Footer_OurStory-List{
     text-align: center;
 }
 
-.reservationForm {
+.reservationForm, .aboutInfo, .mainPageContent {
     padding: 2em;
     background-color:white;
 }
 
-.aboutInfo {
-    padding:2em;
-    background-color:white;
+#aboutInfo_contactInfo_information{
+    display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    text-align: center;
 }
 
-.mainPageContent{
-    padding:2em;
-    background-color:white;
+.aboutInfo_contactInfo_information-listitem{
+    font-weight: bold;
 }
 
 a:link, a:visited {
     text-decoration: none;
+    color: black;
 }
 
 section.aboutInfo_contactInfo td{
