@@ -42,17 +42,11 @@ body {
 
 .content{
     display: flex;
+    flex-flow: column;
     flex: 1 0 auto;
     background-image:url(../Images/background.jpg);
     background-color:white;
-}
-
-#Content_Menu{
-    /*temporary fix*/
-    display: flex;
-    flex-flow: column;
-    background-image:url(../Images/background.jpg);
-    background-repeat: repeat;
+    background-repeat: repeat;    
 }
 
 #Content_Main{
@@ -100,7 +94,7 @@ p.Footer_ContactInfo-List{
         align-items: flex-start;
 }
 
-.Footer_ContactInfo, .Footer_ContactInfo{
+.Footer_ContactInfo{
     text-align:left;
     color:black;
     padding:5px;
@@ -112,34 +106,37 @@ p.Footer_OurStory-List{
 }
 
 a.Footer_OurStory-List{
-    padding: 5px 0px;
+    padding: 5px 0;
     margin:0;
     color:black;
 }
 
-.storyText{
+.storyText, .mainPageContent{
     padding: 2em;
     background-color:white;
     text-align: center;
 }
 
-.reservationForm {
+.reservationForm, .aboutInfo {
     padding: 2em;
     background-color:white;
 }
 
-.aboutInfo {
-    padding:2em;
-    background-color:white;
+#aboutInfo_contactInfo_information{
+    display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    text-align: center;
 }
 
-.mainPageContent{
-    padding:2em;
-    background-color:white;
+.aboutInfo_contactInfo_information-listitem{
+    font-weight: bold;
 }
 
 a:link, a:visited {
     text-decoration: none;
+    color: black;
 }
 
 section.aboutInfo_contactInfo td{
@@ -156,19 +153,10 @@ section.aboutInfo_openingHours li{
         margin: 0 auto;
         width: auto;
     }
-
-    section.aboutInfo_contactInfo table{
-        width:90%
-    }
-
 }
 
 /* AboutInfo for large screens */
 @media (min-width: 700px){
-    section.aboutInfo_contactInfo table{
-        width: 50%;
-    }
-
     .reservationForm, .storyText, .aboutInfo, .mainPageContent{
         width:75%;
         margin:auto;
@@ -180,7 +168,7 @@ section.aboutInfo_openingHours li{
 #linkbox{
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     font-size: 70%;
 }
 table.menu {
