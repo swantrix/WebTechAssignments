@@ -60,13 +60,10 @@ body {
     flex-flow: column;
 }
 
-div.content #MainHeader, p{
-    max-width: 75%;
-}
-
-div.content #MainHeader{
+#MainHeader{
     font-size: 10vw;
-    width: 60%;
+    text-align: center;
+    margin:0;
 }
 
 @media (max-width: 1300px) {
@@ -136,6 +133,11 @@ a.Footer_OurStory-List{
     background-color:white;
 }
 
+.mainPageContent{
+    padding:2em;
+    background-color:white;
+}
+
 a:link, a:visited {
     text-decoration: none;
 }
@@ -167,7 +169,7 @@ section.aboutInfo_openingHours li{
         width: 50%;
     }
 
-    .reservationForm, .storyText, .aboutInfo{
+    .reservationForm, .storyText, .aboutInfo, .mainPageContent{
         width:75%;
         margin:auto;
         margin-top:1.5%;

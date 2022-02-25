@@ -22,7 +22,7 @@
                 <p class="reservationForm_content">
                     Here you can make a reservation for our restaurant.
                 </p>
-                <form class="reservationForm_content">
+                <form class="reservationForm_content" onsubmit="alertUser()">
                     <h3>Reservation information</h3>
                     <label for="reservation_date">Desired reservation date:</label>
                     <input type="date" id="reservation_date" name="reservation_date" required> <br>
@@ -30,14 +30,20 @@
                     <input type="number" id="number_of_persons" name="number_of_persons" min="1" max="10" required> <br>
                     <h3>Personal information</h3>
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" placeholder="Last name, First name" required> <br>
+                    <input type="text" id="name" name="name" placeholder="Last name" required> <br>
                     <label for="email_address">Email address:</label>
-                    <input type="email" id="email_address" name="email_address" required> <br>
+                    <input type="email" id="email_address" name="email_address" required size="30"> <br>
                     <label for="phone_number">Phone number: +31 (0)6</label>
                     <input type="tel" id="phone_number" name="phone_number" pattern="[0-9]{8}" required> <br>
                     <input type="submit" value="Submit">
                     <input type="reset">    
                 </form>
+                <script>
+                    function alertUser()
+                    {
+                        alert("Your reservation has been submitted.");
+                    }
+                </script>
                 <p class="reservationForm_content">
                     If you have previously made a reservation and want to change or cancel your reservation, please email us at pankoyu@sushi.com, call us at 06-92012930 or reach us through our <a href="about.html#contact_information" style="color:black">social medias</a>.
                 </p>
