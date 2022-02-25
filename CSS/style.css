@@ -220,6 +220,7 @@ table.menu {
 .ingredients{
     font-size: 12px;
     color: #293241;
+    font-weight: normal;
 }
 .price{
     font-size: 18px;
