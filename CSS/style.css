@@ -111,13 +111,13 @@ a.Footer_OurStory-List{
     color:black;
 }
 
-.storyText{
+.storyText, .mainPageContent{
     padding: 2em;
     background-color:white;
     text-align: center;
 }
 
-.reservationForm, .aboutInfo, .mainPageContent {
+.reservationForm, .aboutInfo {
     padding: 2em;
     background-color:white;
 }
@@ -153,19 +153,10 @@ section.aboutInfo_openingHours li{
         margin: 0 auto;
         width: auto;
     }
-
-    section.aboutInfo_contactInfo table{
-        width:90%
-    }
-
 }
 
 /* AboutInfo for large screens */
 @media (min-width: 700px){
-    section.aboutInfo_contactInfo table{
-        width: 50%;
-    }
-
     .reservationForm, .storyText, .aboutInfo, .mainPageContent{
         width:75%;
         margin:auto;
