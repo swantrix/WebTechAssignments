@@ -1,3 +1,62 @@
+/*create a list of all element nodes that  should be customizeable*/
+{
+    let body = document.querySelector("body");
+    unfilteredNodeCollection = body.children;
+    console.log(unfilteredNodeCollection)
+    let filteredNodeCollection = new
+
+    for (let i = 0; i < unfilteredNodeCollection.length; i++) {
+        unfilteredNodeCollection.item(i)
+    }
+}
+
+
+/*in the DOM tree, create a <select> with all the customizable elements represented by an <option>, and add a listener with suitable function*/
+
+
+/*When the user selects any of these options, create a list of all possible customisations*/
+
+
+/*in the DOM tree, create a <select> with all possible customisations*/
+
+
+/*When the user selects a customisation, create an appropriate <select> element that allows them to select a value for the customisation (color or font size)*/
+
+
+/*When user selects this option, apply the changes to the element on this HTML page*/
+
+
+var selectorMenu = document.getElementsByName("footer-customizer_target_selector-menu")
+var applyButton = document.getElementById("applyButton")
+applyButton.addEventListener("click", applyChanges)
+
+/*This function should only be available when */
+function applyChanges(){
+    applyButton.style.backgroundColor = "blue"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*old code for practice, remove when i get the other stuff working*/
+
 var mainContent = document.getElementById("Content_main");
 var colorSelector = document.getElementById("colorSelector");
 colorSelector.querySelector("button");
