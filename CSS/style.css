@@ -111,15 +111,25 @@ a.Footer_OurStory-List{
     color:black;
 }
 
-.storyText, .mainPageContent{
+.storyText, .mainPageContent {
     padding: 2em;
     background-color:white;
     text-align: center;
 }
 
-.reservationForm, .aboutInfo {
+.reservationForm, .aboutInfo, .menuPage {
     padding: 2em;
     background-color:white;
+}
+
+.menuPage-header {
+    text-align: center;
+}
+
+.menuPage-linkbox {
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 #aboutInfo_contactInfo_information{
@@ -137,6 +147,12 @@ a.Footer_OurStory-List{
 a:link, a:visited {
     text-decoration: none;
     color: black;
+}
+
+a.menuPage-linkbox__links {
+    padding: 1em;
+    font-size: 1.1em;
+    text-decoration:underline;
 }
 
 section.aboutInfo_contactInfo td{
@@ -233,7 +249,7 @@ table.menu {
 }
 
 @media (min-width: 700px){
-    .reservationForm, .storyText, .aboutInfo, .mainPageContent{
+    .reservationForm, .storyText, .aboutInfo, .mainPageContent, .menuPage{
         width:75%;
         margin:auto;
         margin-top:1.5%;
