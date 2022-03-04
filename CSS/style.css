@@ -11,6 +11,22 @@ body {
     flex-direction: column;
 }
 
+#colorSelector{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#colorSelector button{
+    margin: 10px;
+}
+
+#colorPreview{
+    background-color: black;
+    width: 20px;
+    height: 20px;
+}
+
 .NavigationHeader{
     display: flex;
     flex-wrap: wrap;
@@ -92,6 +108,7 @@ p.Footer_ContactInfo-List{
     display:flex;
         justify-content: space-evenly;
         align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .Footer_ContactInfo{
@@ -109,6 +126,11 @@ a.Footer_OurStory-List{
     padding: 5px 0;
     margin:0;
     color:black;
+}
+
+#footer-customizer-container{
+    display: flex;
+    flex-direction: column;
 }
 
 .storyText, .mainPageContent{
