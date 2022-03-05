@@ -1,17 +1,29 @@
 /*create a list of all element nodes that  should be customizeable*/
-{
     let body = document.querySelector("body");
     unfilteredNodeCollection = body.children;
-    console.log(unfilteredNodeCollection)
-    let filteredNodeCollection = new
+    console.log(unfilteredNodeCollection);
+    let filteredNodeArray = [];
 
     for (let i = 0; i < unfilteredNodeCollection.length; i++) {
-        unfilteredNodeCollection.item(i)
+        if (unfilteredNodeCollection.item(i).nodeType === 1){ /*checks if node is an element*/
+            let ElementType = unfilteredNodeCollection.item(i).tagName;
+            switch (ElementType){
+                case "HEADER":
+                    console.log("HEADER DETECTED");
+                    filteredNodeArray.push(unfilteredNodeCollection.item(i));
+                    break;
+                case "FOOTER":
+                    console.log("FOOTER DETECTED")
+                    filteredNodeArray.push(unfilteredNodeCollection.item(i));
+                    break;
+            }
+        }
+
     }
-}
 
 
 /*in the DOM tree, create a <select> with all the customizable elements represented by an <option>, and add a listener with suitable function*/
+var customizerContainer = document.getElementById("footer-customizer-container");
 
 
 /*When the user selects any of these options, create a list of all possible customisations*/
@@ -37,26 +49,7 @@ function applyChanges(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*old code for practice, remove when i get the other stuff working*/
-
 var mainContent = document.getElementById("Content_main");
 var colorSelector = document.getElementById("colorSelector");
 colorSelector.querySelector("button");
