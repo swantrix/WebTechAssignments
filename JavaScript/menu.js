@@ -125,36 +125,36 @@ let drinkObjects = [ pepsi
                    ];
 
 var menuPageMain = document.createElement('article');
-menuPageMain.classList.add("menuPage");
+menuPageMain.classList.add("menu");
 
 var menuHeading = document.createElement('h1');
 var menuHeadingText = document.createTextNode('Our menu');
-menuHeading.classList.add("menuPage-header")
+menuHeading.classList.add("menu__header")
 menuHeading.appendChild(menuHeadingText);
 
 var menuLinkBox = document.createElement('p');
-menuLinkBox.classList.add("menuPage-linkbox");
+menuLinkBox.classList.add("menu__menu-links");
 
 function createLinkBoxLink(name, link) {
     var linkAnchor = document.createElement('a');
     var linkText = document.createTextNode(name);
     linkAnchor.setAttribute('href', link);
     linkAnchor.appendChild(linkText);
-    linkAnchor.classList.add('menuPage-linkbox__links')
+    linkAnchor.classList.add("menu__link")
 
     menuLinkBox.appendChild(linkAnchor);
 }
 
-createLinkBoxLink("Sashimi", "#sashimiAnchor");
-createLinkBoxLink("Nigiri", "#nigiriAnchor");
-createLinkBoxLink("Maki", "#makiAnchor");
-createLinkBoxLink("Desserts", "#dessertsAnchor");
-createLinkBoxLink("Drinks", "#drinksAnchor");
+createLinkBoxLink("Sashimi", "#sashimi-anchor");
+createLinkBoxLink("Nigiri", "#nigiri-anchor");
+createLinkBoxLink("Maki", "#maki-anchor");
+createLinkBoxLink("Desserts", "#desserts-anchor");
+createLinkBoxLink("Drinks", "#drinks-anchor");
 
 menuPageMain.appendChild(menuHeading);
 menuPageMain.appendChild(menuLinkBox);
 
-function createCategory (name, id) {
+function createCategory(name, id) {
     var categoryHeading = document.createElement('h3');
     var categoryText = document.createTextNode(name);
     categoryHeading.appendChild(categoryText);
@@ -163,11 +163,51 @@ function createCategory (name, id) {
     menuPageMain.appendChild(categoryHeading);
 }
 
-createCategory("Sashimi", "sashimiAnchor");
-createCategory("Nigiri", "nigiriAnchor");
-createCategory("Maki", "makiAnchor");
-createCategory("Desserts", "dessertsAnchor");
-createCategory("Drinks", "drinksAnchor");
+function createProductGrid() { //werkt nog niet
+    var flexDiv = document.createElement('div');
+    flexDiv.classList.add("category-flexbox");
+
+    var gridDiv = document.createElement('div');
+    gridDiv.classList.add("category-grid");
+
+    //productFunction(gridDiv);
+
+    flexDiv.appendChild(gridDiv);
+    menuPageMain.appendchild(flexDiv);
+}
+
+function createSashimiGrid(gridDiv) { //werkt nog niet
+    var i = 0;
+    while (sashimiObjects[i]) {
+        var productDiv = document.createElement('div');
+        productDiv.classList.add("category-grid__product");
+        gridDiv.appendChild(productDiv);
+
+        var imageDiv = document.createElement('div');
+        imageDiv.classList.add("category-grid__product-image");
+
+        i++;
+    }
+}
+
+createCategory("Sashimi", "sashimi-anchor");
+//Add Sashimi menu elements
+//Ik kan for some reason niets meer toevoegen? Dan verdwijnt alles opeens? Wat mis ik.
+
+createCategory("Nigiri", "nigiri-anchor");
+//Add Nigiri menu elements
+
+
+createCategory("Maki", "maki-anchor");
+//Add Maki menu elements
+
+
+createCategory("Desserts", "desserts-anchor");
+//Add Dessert menu elements
+
+
+createCategory("Drinks", "drinks-anchor");
+//Add Drinks menu elements
 
 var contentDivMenu = document.querySelector('#menu-content');
 contentDivMenu.appendChild(menuPageMain);
