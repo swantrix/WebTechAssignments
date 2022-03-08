@@ -155,8 +155,9 @@ menuPageMain.appendChild(menuHeading);
 menuPageMain.appendChild(menuLinkBox);
 
 function createCategory(name, id) {
-    var categoryHeading = document.createElement('h3');
+    var categoryHeading = document.createElement('h2');
     var categoryText = document.createTextNode(name);
+    categoryHeading.classList.add("menu__category-header")
     categoryHeading.appendChild(categoryText);
     categoryHeading.id = id;
     

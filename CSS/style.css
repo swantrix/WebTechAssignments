@@ -11,6 +11,11 @@ body {
     flex-direction: column;
 }
 
+a:link, a:visited {
+    text-decoration: none;
+    color: black;
+}
+
 .nav-header{
     display: flex;
     flex-wrap: wrap;
@@ -126,10 +131,15 @@ a.footer__about-info-item{
     text-align: center;
 }
 
+.menu__category-header, .reservation-form__header {
+    font-size: 18px;
+}
+
 .menu__menu-links {
     display:flex;
     justify-content:center;
     align-items:center;
+    flex-wrap:wrap;
 }
 
 #contact-info-container{
@@ -142,11 +152,6 @@ a.footer__about-info-item{
 
 .contact-info-container__info-item{
     font-weight: bold;
-}
-
-a:link, a:visited {
-    text-decoration: none;
-    color: black;
 }
 
 a.menu__link {
@@ -163,7 +168,7 @@ section.about-info__opening-hours li{
     list-style-type: none;
 }
 
-
+/*old menu css items*/
 #linkbox{
     margin-left: auto;
     margin-right: auto;
@@ -215,6 +220,7 @@ table.menu {
     text-decoration: underline;
     font-weight: bold;
 }
+/*end old menu css items*/
 
 .category-flexbox {
     display: flex;
