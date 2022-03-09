@@ -432,3 +432,44 @@ createDrinksGrid(drinksGridDiv);
 let contentDivMenu = document.querySelector('#menu-content');
 contentDivMenu.appendChild(menuPageMain);
 
+//Cart layout
+var cartMain = document.createElement('section');
+cartMain.setAttribute("id", "cart-section");
+
+var cartTitle = document.createElement('h1');
+cartTitle.setAttribute("id", "cart-title");
+var cartTitleText = document.createTextNode('Your cart:');
+cartTitle.appendChild(cartTitleText);
+cartMain.appendChild(cartTitle);
+
+var cartOrderTable = document.createElement('table');
+cartOrderTable.setAttribute("id", "cart-table");
+cartMain.appendChild(cartOrderTable);
+
+//Fixed header row 
+var fixedHeaderRow = document.createElement("tr");
+fixedHeaderRow.setAttribute("id", "cart-tableRow__fixed");
+
+function colHeaderConstructor (colTitle, span) {
+    var colHead = document.createElement('th');
+    colHead.classList.add("cart-tableCol__header");
+    colHead.setAttribute("rowspan", span);
+    var colHeadText = document.createTextNode(colTitle);
+    colHead.appendChild(colHeadText);
+    fixedHeaderRow.appendChild(colHead);
+}
+
+colHeaderConstructor("Product", 3);
+colHeaderConstructor("Unit price", 1);
+colHeaderConstructor("Quantity", 1);
+colHeaderConstructor("Subtotal", 1);
+
+cartOrderTable.appendChild(fixedHeaderRow)
+
+//Footer
+
+
+
+//Implement cart in div container
+var cartDivContainer = document.getElementById('cart-container');
+cartDivContainer.appendChild(cartMain);
