@@ -168,6 +168,51 @@ section.about-info__opening-hours li{
     list-style-type: none;
 }
 
+#cart-container{
+    background-color: #3d5a80;
+    width: 20em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#cart-title{
+    text-align: center;
+    color: #cf8e58;
+    background-color: #3d5a80;
+    font-size: 2em;
+    padding: 0em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.3em;
+    margin-bottom: 0.2em;
+}
+
+#cart-table{
+    overflow-y: scroll;
+    width: 20em;
+    background-color: lightsteelblue;
+    border-collapse: collapse;
+    border: 1px dotted black;
+}
+
+.cart-tableCol__header{
+    border: 1.5px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    text-align: center;
+    color: black;
+    background-color: rgb(136, 171, 218);
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+#linkbox{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    font-size: 70%;
+}
+
 /*old menu css items*/
 #linkbox{
     margin-left: auto;

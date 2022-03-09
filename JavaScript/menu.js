@@ -304,8 +304,8 @@ createCategory("Drinks", "drinks-anchor");
 let drinksGridDiv = createProductGrid();
 createDrinksGrid(drinksGridDiv);
 
-var contentDivMenu = document.querySelector('#menu-content');
-contentDivMenu.appendChild(menuPageMain);
+//var contentDivMenu = document.querySelector('#menu-content');
+//contentDivMenu.appendChild(menuPageMain);
 
 //Cart layout
 var cartMain = document.createElement('section');
