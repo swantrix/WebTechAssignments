@@ -241,9 +241,13 @@ table.menu {
     display: flex;
     justify-content: space-between;
     flex-flow: column nowrap;
-    border: 1px solid gray;
+    border: 1px solid lightgray;
     border-radius: 1em;
     padding: 20px;
+}
+
+.category-grid__product:hover {
+    border: 1px solid red;
 }
 
 h1.product__header {
@@ -252,7 +256,8 @@ h1.product__header {
 }
 
 img.product__image {
-    float:right;
+    float:right;    
+    border-radius:5%
 }
 
 /*.category-grid__product-image {
