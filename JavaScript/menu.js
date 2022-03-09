@@ -339,12 +339,43 @@ colHeaderConstructor("Unit price", 1);
 colHeaderConstructor("Quantity", 1);
 colHeaderConstructor("Subtotal", 1);
 
-cartOrderTable.appendChild(fixedHeaderRow)
+cartOrderTable.appendChild(fixedHeaderRow);
 
-//Footer
+//                      Footer
+let cartFooter = document.createElement('footer');
+cartFooter.setAttribute("id", "cart-footer");
 
+let cartSummary = document.createElement('table');
+cartSummary.setAttribute("id", "cart-summary");
+cartSummary.setAttribute("align", "right");
+
+
+//Constructors
+function STEntryConstructor (STcellEntry, className) {
+    var colTemp = document.createElement('td');
+    colTemp.classList.add(className);
+    var cellEntryTemp = document.createTextNode(STcellEntry);
+    colTemp.appendChild(cellEntryTemp);
+    cartSummary.appendChild(colTemp);
+}
+
+function STRowCreator () {
+    var rowTemp = document.createElement('tr');
+    cartSummary.appendChild(rowTemp);
+}
+
+//Constructions
+STRowCreator();
+STEntryConstructor("Number of items: ", "cart-summary__counterDesignator");
+STEntryConstructor("jeff", "cart-summary__counter");
+
+STRowCreator();
+STEntryConstructor("Total price: ", "cart-summary__counterDesignator");
+STEntryConstructor("jF €", "cart-summary__counter");
 
 
 //Implement cart in div container
-var cartDivContainer = document.getElementById('cart-container');
+let cartDivContainer = document.getElementById('cart-container');
+cartFooter.appendChild(cartSummary);
+cartMain.appendChild(cartFooter);
 cartDivContainer.appendChild(cartMain);
