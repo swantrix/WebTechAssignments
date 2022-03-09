@@ -63,9 +63,9 @@ class Drinks extends Food {
 }
 
 //Sashimi objects
-var salmonSashimi = new Sashimi("Sake sashimi", 8.50, "sashimi-salmon.jpg", 5, "Salmon");
-var tunaSashimi = new Sashimi("Maguro sashimi", 8.50, "sashimi-tuna.jpg", 5, "Tuna");
-var salmonTunaSashimi = new Sashimi("Sake and maguro sashimi", 12.50, "salmon-and-tunasashimi.jpg", 8, "Salmon, tuna");
+var salmonSashimi = new Sashimi("Sake sashimi", "8.50", "sashimi-salmon.jpg", 5, "Salmon");
+var tunaSashimi = new Sashimi("Maguro sashimi", "8.50", "sashimi-tuna.jpg", 5, "Tuna");
+var salmonTunaSashimi = new Sashimi("Sake and maguro sashimi", "12.50", "salmon-and-tunasashimi.jpg", 8, "Salmon, tuna");
 
 let sashimiObjects = [ salmonSashimi
                      , tunaSashimi
@@ -73,11 +73,11 @@ let sashimiObjects = [ salmonSashimi
                      ];
 
 //Nigiri objects
-var salmonNigiri = new Nigiri("Sake nigiri", 2, "sake.jpg", 2, "Salmon, rice", false);
-var tunaNigiri = new Nigiri("Maguro nigiri", 2, "maguro.jpg", 2, "Tuna, rice", false);
-var shrimpNigiri = new Nigiri("Ebi nigiri", 1.80, "ebi.jpg", 2, "Shrimp, rice", false);
-var crabNigiri = new Nigiri("Kani nigiri", 1.60, "kani.jpg", 2, "Surimi (crab), rice, seaweed", false);
-var eggNigiri = new Nigiri("Tamago nigiri", 1.60, "tamago-nigiri.jpg", 2, "Tamago (egg omelet), rice, seaweed", true);
+var salmonNigiri = new Nigiri("Sake nigiri", "2.00", "sake.jpg", 2, "Salmon, rice", false);
+var tunaNigiri = new Nigiri("Maguro nigiri", "2.00", "maguro.jpg", 2, "Tuna, rice", false);
+var shrimpNigiri = new Nigiri("Ebi nigiri", "1.80", "ebi.jpg", 2, "Shrimp, rice", false);
+var crabNigiri = new Nigiri("Kani nigiri", "1.60", "kani.jpg", 2, "Surimi (crab), rice, seaweed", false);
+var eggNigiri = new Nigiri("Tamago nigiri", "1.60", "tamago-nigiri.jpg", 2, "Tamago (egg omelet), rice, seaweed", true);
 
 let nigiriObjects = [ salmonNigiri
                     , tunaNigiri
@@ -87,10 +87,10 @@ let nigiriObjects = [ salmonNigiri
                     ];
 
 //Maki objects
-var kappaMaki = new Maki("Kappa maki", 4.50, "kappa-maki.jpg", 6, "Cucumber, rice, seaweed", true);
-var sakeMaki = new Maki("Sake maki", 5.50, "sake-maki.jpg", 6, "Salmon, rice, seaweed", false);
-var tekkaMaki = new Maki("Tekka maki", 5.50, "tekka-maki.jpg", 6, "Tuna, rice, seaweed", false);
-var avocadoMaki = new Maki("Avocado maki", 4.50, "avocado-maki.jpg", 6, "Avocado, rice, seaweed", true);
+var kappaMaki = new Maki("Kappa maki", "4.50", "kappa-maki.jpg", 6, "Cucumber, rice, seaweed", true);
+var sakeMaki = new Maki("Sake maki", "5.50", "sake-maki.jpg", 6, "Salmon, rice, seaweed", false);
+var tekkaMaki = new Maki("Tekka maki", "5.50", "tekka-maki.jpg", 6, "Tuna, rice, seaweed", false);
+var avocadoMaki = new Maki("Avocado maki", "4.50", "avocado-maki.jpg", 6, "Avocado, rice, seaweed", true);
 
 let makiObjects = [ kappaMaki
                   , sakeMaki
@@ -99,10 +99,10 @@ let makiObjects = [ kappaMaki
                   ];
 
 //Dessert objects
-var vanillaIcecream = new Desserts("Vanilla icecream", 2.50, "vanilla-icecream.jpg", "Lactose");
-var sesamIcecream = new Desserts("Sesam icecream", 3, "sesam-icecream.jpg", "Lactose");
-var greenTeaIcecream = new Desserts("Green tea icecream", 3, "greentea-icecream.jpg", "Lactose");
-var assortedFruits = new Desserts("Assorted fruits", 2.60, "fruits.jpg", "")
+var vanillaIcecream = new Desserts("Vanilla icecream", "2.50", "vanilla-icecream.jpg", "Lactose");
+var sesamIcecream = new Desserts("Sesam icecream", "3.00", "sesam-icecream.jpg", "Lactose");
+var greenTeaIcecream = new Desserts("Green tea icecream", "3.00", "greentea-icecream.jpg", "Lactose");
+var assortedFruits = new Desserts("Assorted fruits", "2.60", "fruits.jpg", "")
 
 let dessertObjects = [ vanillaIcecream
                      , sesamIcecream
@@ -111,11 +111,11 @@ let dessertObjects = [ vanillaIcecream
                      ];
 
 //Drink objects
-var pepsi = new Drinks("Pepsi", 1.80, "cola.jpg", "330 ml", true);
-var sprite = new Drinks("Sprite", 1.80, "sprite.jpg","330 ml", true);
-var sake = new Drinks("Sake", 5,"sake-drink.jpg", "330 ml", false);
-var kirin = new Drinks("Kirin", 3.50, "kirin.jpg", "330 ml", false);
-var sapporo = new Drinks("Sapporo", 3.50, "sapporo.jpg","330ml", false);
+var pepsi = new Drinks("Pepsi", "1.80", "cola.jpg", "330 ml", true);
+var sprite = new Drinks("Sprite", "1.80", "sprite.jpg","330 ml", true);
+var sake = new Drinks("Sake", "5.00","sake-drink.jpg", "330 ml", false);
+var kirin = new Drinks("Kirin", "3.50", "kirin.jpg", "330 ml", false);
+var sapporo = new Drinks("Sapporo", "3.50", "sapporo.jpg","330ml", false);
 
 let drinkObjects = [ pepsi
                    , sprite
@@ -123,17 +123,6 @@ let drinkObjects = [ pepsi
                    , kirin
                    , sapporo
                    ];
-
-var menuPageMain = document.createElement('article');
-menuPageMain.classList.add("menu");
-
-var menuHeading = document.createElement('h1');
-var menuHeadingText = document.createTextNode('Our menu');
-menuHeading.classList.add("menu__header")
-menuHeading.appendChild(menuHeadingText);
-
-var menuLinkBox = document.createElement('p');
-menuLinkBox.classList.add("menu__menu-links");
 
 function createLinkBoxLink(name, link) {
     var linkAnchor = document.createElement('a');
@@ -145,14 +134,7 @@ function createLinkBoxLink(name, link) {
     menuLinkBox.appendChild(linkAnchor);
 }
 
-createLinkBoxLink("Sashimi", "#sashimi-anchor");
-createLinkBoxLink("Nigiri", "#nigiri-anchor");
-createLinkBoxLink("Maki", "#maki-anchor");
-createLinkBoxLink("Desserts", "#desserts-anchor");
-createLinkBoxLink("Drinks", "#drinks-anchor");
 
-menuPageMain.appendChild(menuHeading);
-menuPageMain.appendChild(menuLinkBox);
 
 function createCategory(name, id) {
     var categoryHeading = document.createElement('h2');
@@ -166,49 +148,110 @@ function createCategory(name, id) {
 
 function createProductGrid() { //werkt nog niet
     var flexDiv = document.createElement('div');
-    flexDiv.classList.add("category-flexbox");
+    flexDiv.classList.add("category-container");
 
     var gridDiv = document.createElement('div');
-    gridDiv.classList.add("category-grid");
-
-    //productFunction(gridDiv);
-
+    gridDiv.classList.add("category-container__category-grid");
     flexDiv.appendChild(gridDiv);
-    menuPageMain.appendchild(flexDiv);
+
+    menuPageMain.appendChild(flexDiv);
+
+    return gridDiv;
 }
 
 function createSashimiGrid(gridDiv) { //werkt nog niet
     var i = 0;
     while (sashimiObjects[i]) {
-        var productDiv = document.createElement('div');
-        productDiv.classList.add("category-grid__product");
-        gridDiv.appendChild(productDiv);
+        let sashimiObject = sashimiObjects[i];
+        
+        //Creating product container
+        var productDisplay = document.createElement('article');
+        productDisplay.classList.add("category-grid__product");
+        
+        //Adding product heading
+        var productHeading = document.createElement('h1');
+        var productHeadingText = document.createTextNode(sashimiObject.name + itemNumberString(sashimiObject.numberOfItems));
+        productHeading.classList.add("product__header")
+        productHeading.appendChild(productHeadingText);
+        productDisplay.appendChild(productHeading);
 
-        var imageDiv = document.createElement('div');
-        imageDiv.classList.add("category-grid__product-image");
+        //Adding product information and image
+        var productImage = document.createElement('img');
+        productImage.setAttribute("src", imageSource(sashimiObject.imageLocation));
+        productImage.setAttribute("alt", sashimiObject.name);
+        productImage.classList.add("product__image");
+
+        var productDesc = document.createElement('p');
+        var productDescText = document.createTextNode("Ingredients: " + sashimiObject.ingredients);
+        productDesc.appendChild(productDescText);
+        var productPrice = document.createElement('p');
+        var productPriceText = document.createTextNode("Price: €" + sashimiObject.price);
+        productPrice.appendChild(productPriceText);
+
+        var productDiv = document.createElement('div');
+        productDiv.appendChild(productImage);
+        productDiv.appendChild(productDesc);
+        productDiv.appendChild(productPrice);
+
+        productDisplay.appendChild(productDiv);
+
+        //Adding item manipulation
+
+
+        gridDiv.appendChild(productDisplay);
 
         i++;
     }
 }
 
+function itemNumberString(numberOfItems) {
+    return " (" + numberOfItems + " PCS)";
+}
+
+function imageSource (image) {
+    return "../images/" + image;
+}
+
+var menuPageMain = document.createElement('article');
+menuPageMain.classList.add("menu");
+
+var menuHeading = document.createElement('h1');
+var menuHeadingText = document.createTextNode('Our menu');
+menuHeading.classList.add("menu__header")
+menuHeading.appendChild(menuHeadingText);
+
+var menuLinkBox = document.createElement('p');
+menuLinkBox.classList.add("menu__menu-links");
+
+createLinkBoxLink("Sashimi", "#sashimi-anchor");
+createLinkBoxLink("Nigiri", "#nigiri-anchor");
+createLinkBoxLink("Maki", "#maki-anchor");
+createLinkBoxLink("Desserts", "#desserts-anchor");
+createLinkBoxLink("Drinks", "#drinks-anchor");
+
+menuPageMain.appendChild(menuHeading);
+menuPageMain.appendChild(menuLinkBox);
+
 createCategory("Sashimi", "sashimi-anchor");
 //Add Sashimi menu elements
-//Ik kan for some reason niets meer toevoegen? Dan verdwijnt alles opeens? Wat mis ik.
+let sashimiGridDiv = createProductGrid();
+createSashimiGrid(sashimiGridDiv);
 
 createCategory("Nigiri", "nigiri-anchor");
 //Add Nigiri menu elements
-
+createProductGrid();
 
 createCategory("Maki", "maki-anchor");
 //Add Maki menu elements
-
+createProductGrid();
 
 createCategory("Desserts", "desserts-anchor");
 //Add Dessert menu elements
-
+createProductGrid();
 
 createCategory("Drinks", "drinks-anchor");
 //Add Drinks menu elements
+createProductGrid();
 
 var contentDivMenu = document.querySelector('#menu-content');
 contentDivMenu.appendChild(menuPageMain);
