@@ -2,29 +2,47 @@
     let body = document.querySelector("body");
     unfilteredNodeCollection = body.children;
     console.log(unfilteredNodeCollection);
-    let filteredNodeArray = [];
+    let filteredNodeArray = []; /*holds all nodes that should be targetable*/
+    let customizerContainer = document.getElementById("footer__customizer__target-selector");
 
+    let customizerTargetOption
     for (let i = 0; i < unfilteredNodeCollection.length; i++) {
         if (unfilteredNodeCollection.item(i).nodeType === 1){ /*checks if node is an element*/
             let ElementType = unfilteredNodeCollection.item(i).tagName;
             switch (ElementType){
                 case "HEADER":
                     console.log("HEADER DETECTED");
+                    customizerTargetOption = document.createElement("option");
+                    customizerTargetOption.textContent = "header"
+                    customizerContainer.appendChild(customizerTargetOption);
                     filteredNodeArray.push(unfilteredNodeCollection.item(i));
                     break;
                 case "FOOTER":
                     console.log("FOOTER DETECTED")
+                    customizerTargetOption = document.createElement("option");
+                    customizerTargetOption.textContent = "footer"
+                    customizerContainer.appendChild(customizerTargetOption);
                     filteredNodeArray.push(unfilteredNodeCollection.item(i));
                     break;
             }
         }
-
     }
 
+/*add <option> html element nodes for each possible target under <select>*/
+for (let node of filteredNodeArray){
 
-/*in the DOM tree, create a <select> with all the customizable elements represented by an <option>, and add a listener with suitable function*/
-var customizerContainer = document.getElementById("footer-customizer-container");
+}
 
+
+for (let i = 0; i<filteredNodeArray.length; i++){
+    let newOption = document.createElement("option");
+    newOption.value
+    newOption.name
+    customizerTargetSelector.appendChild(newOption);
+}
+
+
+/*add functionality to each <option>*/
 
 /*When the user selects any of these options, create a list of all possible customisations*/
 
@@ -38,16 +56,14 @@ var customizerContainer = document.getElementById("footer-customizer-container")
 /*When user selects this option, apply the changes to the element on this HTML page*/
 
 
-var selectorMenu = document.getElementsByName("footer-customizer_target_selector-menu")
-var applyButton = document.getElementById("applyButton")
+let selectorMenu = document.getElementsByName("footer-customizer_target_selector-menu")
+let applyButton = document.getElementById("footer__customizer__apply-button")
 applyButton.addEventListener("click", applyChanges)
 
-/*This function should only be available when */
+/*This function should only be available when*/
 function applyChanges(){
     applyButton.style.backgroundColor = "blue"
 }
-
-
 
 /*old code for practice, remove when i get the other stuff working*/
 var mainContent = document.getElementById("Content_main");
@@ -55,7 +71,6 @@ var colorSelector = document.getElementById("colorSelector");
 colorSelector.querySelector("button");
 
 var japText = document.getElementById("MainHeader");
-var colorSelector = document.getElementById("colorSelector");
 var redButton = document.getElementById("redButton");
 var blueButton = document.getElementById("blueButton");
 var greenButton = document.getElementById("greenButton");
