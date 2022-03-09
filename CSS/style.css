@@ -206,11 +206,26 @@ section.about-info__opening-hours li{
     font-size: 0.8em;
 }
 
-#linkbox{
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0;
-    font-size: 70%;
+#cart-footer{
+    color: black;
+    background-color: #3d5a80;
+}
+
+#cart-summary{
+    font-size: 0.8em;
+}
+
+.cart-summary__counterDesignator{
+    text-align: right;
+    color: #cf8e58;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.cart-summary__counter{
+    text-align: center;
+    color: black;
+    font-weight: bold;
 }
 
 /*old menu css items*/
