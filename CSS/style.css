@@ -175,6 +175,13 @@ section.about-info__opening-hours li{
     margin-right: auto;
 }
 
+#cart-section{
+    width: 20em;
+    height: 400px;
+    background-color: lightsteelblue;
+    overflow-y: auto;
+}
+
 #cart-title{
     text-align: center;
     color: #cf8e58;
@@ -188,11 +195,14 @@ section.about-info__opening-hours li{
 }
 
 #cart-table{
-    overflow-y: scroll;
     width: 20em;
-    background-color: lightsteelblue;
     border-collapse: collapse;
     border: 1px dotted black;
+}
+
+#cart-table thead th{
+    position: sticky;
+    top: 0;
 }
 
 .cart-tableCol__header{
@@ -209,10 +219,12 @@ section.about-info__opening-hours li{
 #cart-footer{
     color: black;
     background-color: #3d5a80;
+    height: 125px;
 }
 
 #cart-summary{
     font-size: 0.8em;
+    background-color: #3d5a80;
 }
 
 .cart-summary__counterDesignator{
@@ -225,7 +237,6 @@ section.about-info__opening-hours li{
 .cart-summary__counter{
     text-align: center;
     color: black;
-    font-weight: bold;
 }
 
 /*old menu css items*/

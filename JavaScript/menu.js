@@ -315,14 +315,16 @@ var cartTitle = document.createElement('h1');
 cartTitle.setAttribute("id", "cart-title");
 var cartTitleText = document.createTextNode('Your cart:');
 cartTitle.appendChild(cartTitleText);
-cartMain.appendChild(cartTitle);
 
+
+//                 Cart order table
 var cartOrderTable = document.createElement('table');
 cartOrderTable.setAttribute("id", "cart-table");
 cartMain.appendChild(cartOrderTable);
 
-//Fixed header row 
-var fixedHeaderRow = document.createElement("tr");
+//Cart table fixed header
+let tableHead = document.createElement("thead");
+let fixedHeaderRow = document.createElement("tr");
 fixedHeaderRow.setAttribute("id", "cart-tableRow__fixed");
 
 function colHeaderConstructor (colTitle, span) {
@@ -339,7 +341,8 @@ colHeaderConstructor("Unit price", 1);
 colHeaderConstructor("Quantity", 1);
 colHeaderConstructor("Subtotal", 1);
 
-cartOrderTable.appendChild(fixedHeaderRow);
+tableHead.appendChild(fixedHeaderRow);
+cartOrderTable.appendChild(tableHead);
 
 //                      Footer
 let cartFooter = document.createElement('footer');
@@ -349,8 +352,6 @@ let cartSummary = document.createElement('table');
 cartSummary.setAttribute("id", "cart-summary");
 cartSummary.setAttribute("align", "right");
 
-
-//Constructors
 function STEntryConstructor (STcellEntry, className) {
     var colTemp = document.createElement('td');
     colTemp.classList.add(className);
@@ -364,7 +365,6 @@ function STRowCreator () {
     cartSummary.appendChild(rowTemp);
 }
 
-//Constructions
 STRowCreator();
 STEntryConstructor("Number of items: ", "cart-summary__counterDesignator");
 STEntryConstructor("jeff", "cart-summary__counter");
@@ -373,9 +373,10 @@ STRowCreator();
 STEntryConstructor("Total price: ", "cart-summary__counterDesignator");
 STEntryConstructor("jF €", "cart-summary__counter");
 
+cartFooter.appendChild(cartSummary);
 
 //Implement cart in div container
 let cartDivContainer = document.getElementById('cart-container');
-cartFooter.appendChild(cartSummary);
-cartMain.appendChild(cartFooter);
+cartDivContainer.appendChild(cartTitle);
 cartDivContainer.appendChild(cartMain);
+cartDivContainer.appendChild(cartFooter);
