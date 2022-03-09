@@ -128,11 +128,17 @@ a.footer__about-info-item{
 }
 
 .menu__header {
+    font-size:2.5em;
     text-align: center;
 }
 
-.menu__category-header, .reservation-form__header {
+.reservation-form__header {
     font-size: 18px;
+}
+
+.menu__category-header {
+    text-align:center;
+    font-size:1.5em;
 }
 
 .menu__menu-links {
@@ -244,10 +250,11 @@ table.menu {
     border: 1px solid lightgray;
     border-radius: 1em;
     padding: 20px;
+    transition-duration:0.4s;
 }
 
 .category-grid__product:hover {
-    border: 1px solid red;
+    border: 1px solid #cf8e58;
 }
 
 h1.product__header {
@@ -260,12 +267,38 @@ img.product__image {
     border-radius:5%
 }
 
-/*.category-grid__product-image {
+.product__incrementer {
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: center;
-    margin-left: 20px;
-}*/
+}
+
+.product__quantity {
+    text-align:center;
+    
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.product__incrementer--minus, .product__incrementer--plus {
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid lightsteelblue;
+    margin: 5px;
+    transition-duration:0.4s;
+    font-size: 150%;
+    width:40px;
+    height:40px;
+}
+
+.product__incrementer--minus:hover, .product__incrementer--plus:hover {
+    background-color: lightsteelblue;
+}
 
 @media (max-width:1200px){
     div {
