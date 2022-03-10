@@ -128,7 +128,7 @@ a.Footer_OurStory-List{
     color:black;
 }
 
-#footer-customizer-container{
+.footer__customizer{
     display: flex;
     flex-direction: column;
 }

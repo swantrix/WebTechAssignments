@@ -49,20 +49,29 @@
                 <p><a class="Footer_OurStory-List" href="booking.html" style="color:black">Book a table</a></p>
                 <p><a class="Footer_OurStory-List" href="about.html#opening_hours" style="color:black">Opening hours</a></p>
             </article>
-            <form id="footer-customizer-container">
+            <form class="footer__customizer">
                 <h4>Page customizer 3000</h4>
-                <select name="footer-customizer_target_selector-menu">
-                    <option value="footer">footer</option>
-                    <option value="header">header</option>
-                    <option value="articles">articles</option>
-                    <option value="sections">sections</option>
-                    <option value="aside">aside</option>
+                <div>
+                    <label for="footer__customizer__target-selector">Target:</label>
+                    <select name="target" id="footer__customizer__target-selector">
                 </select>
-                <select name="footer-customizer_change_selector-menu">
-                    <option value="color">color</option>
-                    <option value="font_size">font size</option>
-                </select>
-                <button type="button" id="applyButton" value="apply">apply</button>
+                </div>
+                <div>
+                    <label for="footer__customizer__change-selector">Change type: </label>
+                    <select name="changeType" id="footer__customizer__changeType-selector">
+                        <option value="color">color</option>
+                        <option value="font_size">font size</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="footer__customizer__change-selector">Change: </label>
+                    <select name="changeType" id="footer__customizer__change-selector">
+                        <option value="blue">blue</option>
+                        <option value="red">red</option>
+                        <option value="green">green</option>
+                    </select>
+                </div>
+                <button type="button" id="footer__customizer__apply-button" value="apply">apply</button>
             </form>
         </footer>
     <script src="../JavaScript/CustomizerScript.js"></script>
