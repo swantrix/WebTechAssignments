@@ -52,23 +52,28 @@
             <form class="footer__customizer">
                 <h4>Page customizer 3000</h4>
                 <div>
-                    <label for="footer__customizer__target-selector">Target:</label>
-                    <select name="target" id="footer__customizer__target-selector">
+                    <label for="footer__customizer__element-target-selector">Target:</label>
+                    <select name="target" id="footer__customizer__element-target-selector">
+                        <option value="header" class="notViableOption">header</option>
+                        <option value="footer" class="notViableOption">footer</option>
                 </select>
                 </div>
                 <div>
-                    <label for="footer__customizer__change-selector">Change type: </label>
-                    <select name="changeType" id="footer__customizer__changeType-selector">
-                        <option value="color">color</option>
-                        <option value="font_size">font size</option>
+                    <label for="footer__customizer__change-type-selector">Change type: </label>
+                    <select name="changeType" id="footer__customizer__change-type-selector">
+                        <option value="color" class="notViableOption">color</option>
+                        <option value="font_size" class="notViableOption">font size</option>
                     </select>
                 </div>
                 <div>
                     <label for="footer__customizer__change-selector">Change: </label>
-                    <select name="changeType" id="footer__customizer__change-selector">
-                        <option value="blue">blue</option>
-                        <option value="red">red</option>
-                        <option value="green">green</option>
+                    <select name="change" id="footer__customizer__change-selector">
+                        <option value="blue" class="notViableOption">blue</option>
+                        <option value="red" class="notViableOption">red</option>
+                        <option value="green" class="notViableOption">green</option>
+                        <option value="small" class="notViableOption">small</option>
+                        <option value="medium" class="notViableOption">medium</option>
+                        <option value="large" class="notViableOption">large</option>
                     </select>
                 </div>
                 <button type="button" id="footer__customizer__apply-button" value="apply">apply</button>

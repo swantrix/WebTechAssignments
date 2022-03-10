@@ -1,109 +1,93 @@
+/*an object that represents the change that is selected*/
+const currentChange = {
+    elementTarget : undefined, //holds target element
+    changeType : undefined,
+    change : undefined,
+
+    applyChanges : function (){
+        if (typeof currentChange.elementTarget !== 'undefined' && typeof currentChange.changeType !== 'undefined' && typeof currentChange.change !== 'undefined'){
+            switch (this.changeType) {
+                case 'color':
+                    this.elementTarget.style.backgroundColor = this.change;
+                    break;
+                case 'font_size':
+                    break
+            }
+
+
+        }
+
+    }
+}
+
+/*creates an object that includes all html options elements for ease of use in code*/
+const options = {
+    target : {
+        header : document.querySelector("option[value='header']"),
+        footer : document.querySelector("option[value='footer']")
+    },
+    changeType : {
+        color : document.querySelector("option[value='color']"),
+        fontSize : document.querySelector("option[value='font_size']")
+    },
+    change : {
+        blue : document.querySelector("option[value='blue']"),
+        red : document.querySelector("option[value='red']"),
+        green : document.querySelector("option[value='green']"),
+        small : document.querySelector("option[value='small']"),
+        medium : document.querySelector("option[value='medium']"),
+        large : document.querySelector("option[value='large']"),
+    }
+}
+
+
+
 /*create a list of all element nodes that  should be customizeable*/
     let body = document.querySelector("body");
-    unfilteredNodeCollection = body.children;
-    console.log(unfilteredNodeCollection);
-    let filteredNodeArray = []; /*holds all nodes that should be targetable*/
-    let customizerContainer = document.getElementById("footer__customizer__target-selector");
+    baseElementCollection = body.children;
+    console.log(baseElementCollection);
+    let customizerElementTargetSelector = document.getElementById("footer__customizer__element-target-selector");
 
-    let customizerTargetOption
-    for (let i = 0; i < unfilteredNodeCollection.length; i++) {
-        if (unfilteredNodeCollection.item(i).nodeType === 1){ /*checks if node is an element*/
-            let ElementType = unfilteredNodeCollection.item(i).tagName;
+for (let i = 0; i < baseElementCollection.length; i++) {
+        if (baseElementCollection.item(i).nodeType === 1){ /*checks if node is an element*/
+            let ElementType = baseElementCollection.item(i).tagName;
             switch (ElementType){
                 case "HEADER":
                     console.log("HEADER DETECTED");
-                    customizerTargetOption = document.createElement("option");
-                    customizerTargetOption.textContent = "header"
-                    customizerContainer.appendChild(customizerTargetOption);
-                    filteredNodeArray.push(unfilteredNodeCollection.item(i));
+                    options.target.header.classList.remove('notViableOption')
                     break;
+
                 case "FOOTER":
                     console.log("FOOTER DETECTED")
-                    customizerTargetOption = document.createElement("option");
-                    customizerTargetOption.textContent = "footer"
-                    customizerContainer.appendChild(customizerTargetOption);
-                    filteredNodeArray.push(unfilteredNodeCollection.item(i));
+                    options.target.footer.classList.remove('notViableOption')
                     break;
             }
         }
     }
 
-/*add <option> html element nodes for each possible target under <select>*/
-for (let node of filteredNodeArray){
+/*enables footer__customizer__element-target-selector to change the targeted element*/
+customizerElementTargetSelector.addEventListener('input', handleElementTargetSelect)
 
+function handleElementTargetSelect(ev){
+    let selectedTargetOption = ev.target; //target is now the element that has been selected by the user
+    currentChange.elementTarget = selectedTargetOption.value;
+    console.log(currentChange.elementTarget + " has been selected by user");
+
+    /*makes all changeType options hidden, except for the ones that are possible given the new element target*/
+    options.changeType.color.classList.add('notViableOption')
+    options.changeType.fontSize.classList.add('notViableOption')
+
+    switch (selectedTargetOption.value){
+        case "header":
+            options.changeType.color.classList.remove('notViableOption')
+            break;
+        case 'footer':
+            options.changeType.fontSize.classList.remove('notViableOption')
+            break;
+    }
 }
 
 
-for (let i = 0; i<filteredNodeArray.length; i++){
-    let newOption = document.createElement("option");
-    newOption.value
-    newOption.name
-    customizerTargetSelector.appendChild(newOption);
-}
-
-
-/*add functionality to each <option>*/
-
-/*When the user selects any of these options, create a list of all possible customisations*/
-
-
-/*in the DOM tree, create a <select> with all possible customisations*/
-
-
-/*When the user selects a customisation, create an appropriate <select> element that allows them to select a value for the customisation (color or font size)*/
-
-
-/*When user selects this option, apply the changes to the element on this HTML page*/
-
-
-let selectorMenu = document.getElementsByName("footer-customizer_target_selector-menu")
+/*When user clicks apply, applies the change if all options have selected*/
 let applyButton = document.getElementById("footer__customizer__apply-button")
-applyButton.addEventListener("click", applyChanges)
-
-/*This function should only be available when*/
-function applyChanges(){
-    applyButton.style.backgroundColor = "blue"
-}
-
-/*old code for practice, remove when i get the other stuff working*/
-var mainContent = document.getElementById("Content_main");
-var colorSelector = document.getElementById("colorSelector");
-colorSelector.querySelector("button");
-
-var japText = document.getElementById("MainHeader");
-var redButton = document.getElementById("redButton");
-var blueButton = document.getElementById("blueButton");
-var greenButton = document.getElementById("greenButton");
-var colorPreview = document.getElementById("colorPreview");
-var japTextDescr = document.getElementById("japTextDescr");
-var currentColor = "black"; /*represents the color to be changed to*/
-
-
-/*go through each button and add a listener that will change the color of the "color picker"*/
-redButton.addEventListener("click", setRed)
-greenButton.addEventListener("click", setGreen)
-blueButton.addEventListener("click", setBlue)
-
-/*event handlers for each button*/
-function setRed(){
-    currentColor = "red";
-    colorPreview.style.backgroundColor = "red";
-}
-
-function setBlue(){
-    currentColor = "blue";
-    colorPreview.style.backgroundColor = "blue";
-}
-
-function setGreen(){
-    currentColor = "green";
-    colorPreview.style.backgroundColor = "green";
-}
-
-function makeCustomColor(){
-    this.style.color = currentColor;
-}
-
-/*make japtext and paragraph of japtext element clickable and change color to "color picker" color*/
-japText.addEventListener("click", makeCustomColor)
-japTextDescr.addEventListener("click", makeCustomColor)
+applyButton.addEventListener("click", currentChange.applyChanges)

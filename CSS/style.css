@@ -263,3 +263,8 @@ table.menu {
         border-radius:1em;
     }
 }
+
+/*for customizer 3000*/
+.notViableOption{
+    display: none;
+}
