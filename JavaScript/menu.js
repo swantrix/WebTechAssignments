@@ -459,8 +459,8 @@ createCategory("Drinks", "drinks-anchor");
 let drinksGridDiv = createProductGrid();
 createDrinksGrid(drinksGridDiv);
 
-let contentDivMenu = document.querySelector('#menu-content');
-contentDivMenu.appendChild(menuPageMain);
+//let contentDivMenu = document.querySelector('#menu-content');
+//contentDivMenu.appendChild(menuPageMain);
 
 
 function incrementQuantity(e) {
@@ -468,7 +468,7 @@ function incrementQuantity(e) {
 
 }
 
-/*//Cart layout
+//Cart layout
 var cartMain = document.createElement('section');
 cartMain.setAttribute("id", "cart-section");
 
