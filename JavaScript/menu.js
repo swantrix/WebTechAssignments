@@ -13,94 +13,95 @@ class Menusection { //Nog niet helemaal duidelijk waar deze dan voor nodig zijn?
 }
 
 class Food { 
-    constructor (name, price, imageLocation) {
+    constructor (name, price, imageLocation, quantity) {
         this.name = name; //string
         this.price = price; //double
         this.imageLocation = imageLocation; //string
+        this.quantity = quantity; //int
     }
 }
 
 class Sushi extends Food {
-    constructor (name, price, imageLocation, numberOfItems, ingredients) {
-        super (name, price, imageLocation);
+    constructor (name, price, imageLocation, numberOfItems, ingredients, quantity) {
+        super (name, price, imageLocation, quantity);
         this.numberOfItems = numberOfItems; //int
         this.ingredients = ingredients; //string
     }
 }
 
 class Sashimi extends Sushi {
-    constructor (name, price, imageLocation, numberOfItems, ingredients) {
-        super (name, price, imageLocation, numberOfItems, ingredients);
+    constructor (name, price, imageLocation, numberOfItems, ingredients, quantity) {
+        super (name, price, imageLocation, numberOfItems, ingredients, quantity);
     }
 }
 
 class Nigiri extends Sushi {
-    constructor (name, price, imageLocation, numberOfItems, ingredients, vegetarian) {
-        super (name, price, imageLocation, numberOfItems, ingredients);
+    constructor (name, price, imageLocation, numberOfItems, ingredients, vegetarian, quantity) {
+        super (name, price, imageLocation, numberOfItems, ingredients, quantity);
         this.vegetarian = vegetarian; //bool
     }
 }
 
 class Maki extends Sushi {
-    constructor (name, price, imageLocation, numberOfItems, ingredients, vegetarian) {
-        super (name, price, imageLocation, numberOfItems, ingredients);
+    constructor (name, price, imageLocation, numberOfItems, ingredients, vegetarian, quantity) {
+        super (name, price, imageLocation, numberOfItems, ingredients, quantity);
         this.vegetarian = vegetarian; //bool
     }
 }
 
 class Desserts extends Food {
-    constructor (name, price, imageLocation, allergens) {
-        super (name, price, imageLocation);
+    constructor (name, price, imageLocation, allergens, quantity) {
+        super (name, price, imageLocation, quantity);
         this.allergens = allergens //string
     }
 }
 
 class Drinks extends Food {
-    constructor (name, price, imageLocation, volume, alcoholFree) {
-        super (name, price, imageLocation);
+    constructor (name, price, imageLocation, volume, alcoholFree, quantity) {
+        super (name, price, imageLocation, quantity);
         this.volume = volume; //string
         this.alcoholFree = alcoholFree //bool
     }
 }
 
 //Sashimi objects
-let salmonSashimi = new Sashimi("Sake sashimi", "8.50", "sashimi-salmon.jpg", 5, "Salmon");
-let tunaSashimi = new Sashimi("Maguro sashimi", "8.50", "sashimi-tuna.jpg", 5, "Tuna");
-let salmonTunaSashimi = new Sashimi("Sake and maguro sashimi", "12.50", "salmon-and-tunasashimi.jpg", 8, "Salmon, tuna");
+let salmonSashimi = new Sashimi("Sake sashimi", "8.50", "sashimi-salmon.jpg", 5, "Salmon", 0);
+let tunaSashimi = new Sashimi("Maguro sashimi", "8.50", "sashimi-tuna.jpg", 5, "Tuna", 0);
+let salmonTunaSashimi = new Sashimi("Sake and maguro sashimi", "12.50", "salmon-and-tunasashimi.jpg", 8, "Salmon, tuna", 0);
 
 let sashimiMenuSection = new Menusection("Sashimi", [salmonSashimi, tunaSashimi, salmonTunaSashimi]); 
 
 //Nigiri objects
-let salmonNigiri = new Nigiri("Sake nigiri", "2.00", "sake.jpg", 2, "Salmon, rice", false);
-let tunaNigiri = new Nigiri("Maguro nigiri", "2.00", "maguro.jpg", 2, "Tuna, rice", false);
-let shrimpNigiri = new Nigiri("Ebi nigiri", "1.80", "ebi.jpg", 2, "Shrimp, rice", false);
-let crabNigiri = new Nigiri("Kani nigiri", "1.60", "kani.jpg", 2, "Surimi (crab), rice, seaweed", false);
-let eggNigiri = new Nigiri("Tamago nigiri", "1.60", "tamago-nigiri.jpg", 2, "Tamago (egg omelet), rice, seaweed", true);
+let salmonNigiri = new Nigiri("Sake nigiri", "2.00", "sake.jpg", 2, "Salmon, rice", false, 0);
+let tunaNigiri = new Nigiri("Maguro nigiri", "2.00", "maguro.jpg", 2, "Tuna, rice", false, 0);
+let shrimpNigiri = new Nigiri("Ebi nigiri", "1.80", "ebi.jpg", 2, "Shrimp, rice", false, 0);
+let crabNigiri = new Nigiri("Kani nigiri", "1.60", "kani.jpg", 2, "Surimi (crab), rice, seaweed", false, 0);
+let eggNigiri = new Nigiri("Tamago nigiri", "1.60", "tamago-nigiri.jpg", 2, "Tamago (egg omelet), rice, seaweed", true, 0);
 
 let nigiriMenuSection = new Menusection("Nigiri", [salmonNigiri, tunaNigiri, shrimpNigiri, crabNigiri, eggNigiri]);
 
 //Maki objects
-let kappaMaki = new Maki("Kappa maki", "4.50", "kappa-maki.jpg", 6, "Cucumber, rice, seaweed", true);
-let sakeMaki = new Maki("Sake maki", "5.50", "sake-maki.jpg", 6, "Salmon, rice, seaweed", false);
-let tekkaMaki = new Maki("Tekka maki", "5.50", "tekka-maki.jpg", 6, "Tuna, rice, seaweed", false);
-let avocadoMaki = new Maki("Avocado maki", "4.50", "avocado-maki.jpg", 6, "Avocado, rice, seaweed", true);
+let kappaMaki = new Maki("Kappa maki", "4.50", "kappa-maki.jpg", 6, "Cucumber, rice, seaweed", true, 0);
+let sakeMaki = new Maki("Sake maki", "5.50", "sake-maki.jpg", 6, "Salmon, rice, seaweed", false, 0);
+let tekkaMaki = new Maki("Tekka maki", "5.50", "tekka-maki.jpg", 6, "Tuna, rice, seaweed", false, 0);
+let avocadoMaki = new Maki("Avocado maki", "4.50", "avocado-maki.jpg", 6, "Avocado, rice, seaweed", true, 0);
 
 let makiMenuSection = new Menusection("Maki", [kappaMaki, sakeMaki, tekkaMaki, avocadoMaki]);
 
 //Dessert objects
-let vanillaIcecream = new Desserts("Vanilla icecream", "2.50", "vanilla-icecream.jpg", "Lactose");
-let sesamIcecream = new Desserts("Sesam icecream", "3.00", "sesam-icecream.jpg", "Lactose");
-let greenTeaIcecream = new Desserts("Green tea icecream", "3.00", "greentea-icecream.jpg", "Lactose");
+let vanillaIcecream = new Desserts("Vanilla icecream", "2.50", "vanilla-icecream.jpg", "Lactose", 0);
+let sesamIcecream = new Desserts("Sesam icecream", "3.00", "sesam-icecream.jpg", "Lactose", 0);
+let greenTeaIcecream = new Desserts("Green tea icecream", "3.00", "greentea-icecream.jpg", "Lactose", 0);
 let assortedFruits = new Desserts("Assorted fruits", "2.60", "fruits.jpg", "")
 
 let dessertMenuSection = new Menusection("Desserts", [vanillaIcecream, sesamIcecream, greenTeaIcecream, assortedFruits]);
 
 //Drink objects
-let pepsi = new Drinks("Pepsi", "1.80", "cola.jpg", "330 ml", true);
-let sprite = new Drinks("Sprite", "1.80", "sprite.jpg","330 ml", true);
-let sake = new Drinks("Sake", "5.00","sake-drink.jpg", "330 ml", false);
-let kirin = new Drinks("Kirin", "3.50", "kirin.jpg", "330 ml", false);
-let sapporo = new Drinks("Sapporo", "3.50", "sapporo.jpg","330ml", false);
+let pepsi = new Drinks("Pepsi", "1.80", "cola.jpg", "330 ml", true, 0);
+let sprite = new Drinks("Sprite", "1.80", "sprite.jpg","330 ml", true, 0);
+let sake = new Drinks("Sake", "5.00","sake-drink.jpg", "330 ml", false, 0);
+let kirin = new Drinks("Kirin", "3.50", "kirin.jpg", "330 ml", false, 0);
+let sapporo = new Drinks("Sapporo", "3.50", "sapporo.jpg","330ml", false, 0);
 
 let drinksMenuSection = new Menusection("Drinks", [pepsi, sprite, sake, kirin, sapporo]);
 
@@ -157,6 +158,7 @@ function createSashimiGrid(gridDiv) { //werkt nog niet
 
         //Adding product information and image
         let productDiv = document.createElement('div');
+        productDiv.classList.add("product__description");
         
         let productImage = createProductImage(sashimiObject);
         productDiv.appendChild(productImage);
@@ -172,7 +174,7 @@ function createSashimiGrid(gridDiv) { //werkt nog niet
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
-        let incrementer = createQuantityIncrementer();
+        let incrementer = createQuantityIncrementer(sashimiObject);
         productDisplay.appendChild(incrementer);
 
         gridDiv.appendChild(productDisplay);
@@ -196,6 +198,7 @@ function createNigiriOrMakiGrid(gridDiv, productObjects) {
 
         //Adding product information and image
         let productDiv = document.createElement('div');
+        productDiv.classList.add("product__description");
 
         let productImage = createProductImage(productObject);
         productDiv.appendChild(productImage);
@@ -218,7 +221,7 @@ function createNigiriOrMakiGrid(gridDiv, productObjects) {
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
-        let incrementer = createQuantityIncrementer();
+        let incrementer = createQuantityIncrementer(productObject);
         productDisplay.appendChild(incrementer);
 
         gridDiv.appendChild(productDisplay);
@@ -242,6 +245,7 @@ function createDessertsGrid(gridDiv) {
 
         //Adding product information and image
         let productDiv = document.createElement('div');
+        productDiv.classList.add("product__description");
         
         let productImage = createProductImage(dessertObject);
         productDiv.appendChild(productImage);
@@ -259,7 +263,7 @@ function createDessertsGrid(gridDiv) {
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
-        let incrementer = createQuantityIncrementer();
+        let incrementer = createQuantityIncrementer(dessertObject);
         productDisplay.appendChild(incrementer);
 
         gridDiv.appendChild(productDisplay);
@@ -282,16 +286,16 @@ function createDrinksGrid(gridDiv) {
         productDisplay.appendChild(productHeading);
 
         //Adding product information and image
+        let productDiv = document.createElement('div');
+        productDiv.classList.add("product__description");
+        
         let productImage = createProductImage(drinksObject);
+        productDiv.appendChild(productImage);
 
         let productDesc = document.createElement('p');
         let productDescText = document.createTextNode("Volume: " + drinksObject.volume);
         productDesc.appendChild(productDescText);
-        let productPrice = createProductPrice(drinksObject);
-
-        let productDiv = document.createElement('div');
-        productDiv.appendChild(productImage);
-        productDiv.appendChild(productDesc);
+        productDiv.appendChild(productDesc);       
 
         if (!drinksObject.alcoholFree) {
             let alcoholIndicator = document.createElement('p');
@@ -300,12 +304,13 @@ function createDrinksGrid(gridDiv) {
             productDiv.appendChild(alcoholIndicator);
         }
 
+        let productPrice = createProductPrice(drinksObject);
         productDiv.appendChild(productPrice);
 
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
-        let incrementer = createQuantityIncrementer();
+        let incrementer = createQuantityIncrementer(drinksObject);
         productDisplay.appendChild(incrementer);
 
         gridDiv.appendChild(productDisplay);
@@ -353,26 +358,28 @@ function createProductPrice(productObject) {
     return productPrice;
 }
 
-function createQuantityIncrementer() {
+function createQuantityIncrementer(productObject) {
     let incrementerDiv = document.createElement('div');
     incrementerDiv.classList.add("product__incrementer");
 
     let minusButton = document.createElement('button');
     let minusButtonText = document.createTextNode("-");
     minusButton.setAttribute("type", "button");
+    minusButton.setAttribute("name", productObject.name + " decrease");
     minusButton.classList.add("product__incrementer--minus");
     minusButton.appendChild(minusButtonText);
     
     let quantityInput = document.createElement('input');
     quantityInput.setAttribute("type", "number");
-    quantityInput.setAttribute("name", "item-quantity");
-    quantityInput.setAttribute("value", "0")
+    quantityInput.setAttribute("name", productObject.name + " quantity");
+    quantityInput.setAttribute("value", productObject.quantity);
     quantityInput.setAttribute("min", "0");
     quantityInput.classList.add("product__quantity");
     
     let plusButton = document.createElement('button');
     let plusButtonText = document.createTextNode("+");
     plusButton.setAttribute("type", "button");
+    plusButton.setAttribute("name", productObject.name + " increase");
     plusButton.classList.add("product__incrementer--plus");
     plusButton.appendChild(plusButtonText);
 
@@ -432,7 +439,13 @@ createDrinksGrid(drinksGridDiv);
 let contentDivMenu = document.querySelector('#menu-content');
 contentDivMenu.appendChild(menuPageMain);
 
-//Cart layout
+
+function incrementQuantity(e) {
+    e.preventDefault();
+
+}
+
+/*//Cart layout
 var cartMain = document.createElement('section');
 cartMain.setAttribute("id", "cart-section");
 
@@ -472,4 +485,4 @@ cartOrderTable.appendChild(fixedHeaderRow)
 
 //Implement cart in div container
 var cartDivContainer = document.getElementById('cart-container');
-cartDivContainer.appendChild(cartMain);
+cartDivContainer.appendChild(cartMain);*/

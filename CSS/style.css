@@ -254,7 +254,7 @@ table.menu {
 }
 
 .category-grid__product:hover {
-    border: 1px solid #cf8e58;
+    border: 1px solid lightsteelblue;
 }
 
 h1.product__header {
@@ -267,6 +267,10 @@ img.product__image {
     border-radius:5%
 }
 
+.product__description {
+    margin: 5px 0px;
+}
+
 .product__incrementer {
     display: flex;
     flex-direction: row;
@@ -276,13 +280,12 @@ img.product__image {
 
 .product__quantity {
     text-align:center;
-    
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    margin:5px;
+    height:40px;
+    width:100px;
+    border: 1px solid lightsteelblue;
+    border-radius:1em;
+    font-size:150%;
 }
 
 .product__incrementer--minus, .product__incrementer--plus {
