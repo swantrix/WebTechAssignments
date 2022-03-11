@@ -1,0 +1,351 @@
+tml, body {
+    height:100%;
+}
+
+body {
+    background-color: ghostwhite;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 1.5em;
+    background-color: lightsteelblue;
+    justify-content: stretch;
+}
+
+.nav-header__text-links{
+    font-size: 1.8em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 2;
+    margin-right: 10px;
+}
+
+.nav-header__text-links a{ /*The text-links in the header*/
+    padding: 2vw;
+    border-radius: 0.2em;
+    color: #131313;
+    font-weight: bold;
+}
+
+.nav-header__text-links a:hover{
+    background-color: #82a6da;
+}
+
+main.content{
+    display: flex;
+    flex-flow: column;
+    flex: 1 0 auto;
+    background-image:url(../images/background.jpg);
+    background-color:white;
+    background-repeat: repeat;
+}
+
+#main-content{
+    display: flex;
+    flex-flow: column;
+}
+
+#mainpage-content__header{
+    font-size: 10vw;
+    text-align: center;
+    margin:0;
+}
+
+@media (max-width: 1300px) {
+    /*makes header vertical on small screens*/
+    body .nav-header{
+        flex-flow: column;
+    }
+    body .nav-header__text-links{
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+    }
+
+    body .nav-header__text-links a{ /*The text-links in the header*/
+        margin: 5px 0px 5px 0;
+    }
+}
+
+img.footer__contact-image{
+    float:left;
+    padding:5px;
+    width:10%;
+    height:10%
+}
+
+p.footer__contact-info-item{
+    padding:5px;
+}
+
+.footer{
+    background-color: lightsteelblue;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.footer__contact-info{
+    text-align:left;
+    color:black;
+    padding:5px;
+}
+
+p.footer__about-info-item{
+    padding:5px;
+    margin:0;
+}
+
+a.footer__about-info-item{
+    padding: 5px 0;
+    margin:0;
+    color:black;
+}
+
+.story-text, .mainpage-content {
+    padding: 2em;
+    background-color:white;
+    text-align: center;
+}
+
+.reservation-form, .about-info, .menu {
+    padding: 2em;
+    background-color:white;
+}
+
+.menu__header {
+    font-size:2.5em;
+    text-align: center;
+}
+
+.reservation-form__header {
+    font-size: 18px;
+}
+
+.menu__category-header {
+    text-align:center;
+    font-size:1.5em;
+}
+
+.menu__menu-links {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+#contact-info-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.contact-info-container__info-item{
+    font-weight: bold;
+}
+
+a.menu__link {
+    padding: 1em;
+    font-size: 1.1em;
+    text-decoration:underline;
+}
+
+section.about-info__contact-info td{
+    text-align: center;
+}
+
+section.about-info__opening-hours li{
+    list-style-type: none;
+}
+
+/*old menu css items*/
+#linkbox{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    font-size: 70%;
+}
+table.menu {
+    background-color: lightsteelblue;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.menuTitle{
+    text-align: center;
+    color: #cf8e58;
+    background-color: #3d5a80;
+    font-size: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.links{
+    background-color: lightsteelblue;
+    color: #cf8e58;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+.section{
+    color: #293241;
+    text-decoration-line: underline;
+    font-weight: bold;
+    font-size: 20px;
+}
+.name{
+    font-size: 16px;
+    color: #cf8e58;
+    font-weight: bold;
+}
+.ingredients{
+    font-size: 12px;
+    color: #293241;
+    font-weight: normal;
+}
+.price{
+    font-size: 18px;
+    color: #cf8e58;
+    text-decoration: underline;
+    font-weight: bold;
+}
+/*end old menu css items*/
+
+.category-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.category-container__category-grid {
+    flex: 1;
+    display: grid;
+    grid-auto-rows: minmax(min-content, max-content); /* deze regel is van een website: https://www.mrbento.nl/c/deals overgenomen, nog even geen idee hoe het werkt */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* deze regel is van een website: https://www.mrbento.nl/c/deals overgenomen, nog even geen idee hoe het werkt */
+    grid-gap: 20px;
+}
+
+.category-grid__product {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    border: 1px solid lightgray;
+    border-radius: 1em;
+    padding: 20px;
+    transition-duration:0.4s;
+}
+
+.category-grid__product:hover {
+    border: 1px solid lightsteelblue;
+}
+
+h1.product__header {
+    text-align:center;
+    margin-top:0;
+}
+
+img.product__image {
+    float:right;
+    border-radius:5%
+}
+
+.product__description {
+    margin: 5px 0px;
+}
+
+.product__incrementer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.product__quantity {
+    text-align:center;
+    margin:5px;
+    height:40px;
+    width:100px;
+    border: 1px solid lightsteelblue;
+    border-radius:1em;
+    font-size:150%;
+}
+
+.product__incrementer--minus, .product__incrementer--plus {
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid lightsteelblue;
+    margin: 5px;
+    transition-duration:0.4s;
+    font-size: 150%;
+    width:40px;
+    height:40px;
+}
+
+.product__incrementer--minus:hover, .product__incrementer--plus:hover {
+    background-color: lightsteelblue;
+}
+
+@media (max-width:1200px){
+    div {
+        margin: 0;
+        width: auto;
+    }
+
+    table.menu{
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    .title{
+        width:75%;
+    }
+}
+
+@media (max-width: 700px) {
+    div {
+        margin: 0;
+        width: auto;
+    }
+
+    table.menu{
+        width: 100%;
+        margin: 0;
+    }
+
+    .title{
+        width:100%;
+    }
+}
+
+@media (min-width: 700px){
+    .reservation-form, .story-text, .about-info, .mainpage-content, .menu{
+        width:75%;
+        margin:auto;
+        margin-top:1.5%;
+        margin-bottom:1.5%;
+        border-radius:1em;
+    }
+}
+
+/*for customizer 3000*/
+.notViableOption{
+    display: none;
+}
