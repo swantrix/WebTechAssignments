@@ -13,10 +13,7 @@ const currentChange = {
                 case 'font_size':
                     break
             }
-
-
         }
-
     }
 }
 
@@ -64,6 +61,8 @@ for (let i = 0; i < baseElementCollection.length; i++) {
             }
         }
     }
+
+
 
 /*enables footer__customizer__element-target-selector to change the targeted element*/
 customizerElementTargetSelector.addEventListener('input', handleElementTargetSelect)
