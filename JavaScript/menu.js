@@ -108,6 +108,8 @@ let drinksMenuSection = new Menusection("Drinks", [pepsi, sprite, sake, kirin, s
 //Menu
 let fullMenu = new Menu([sashimiMenuSection, nigiriMenuSection, makiMenuSection, dessertMenuSection, drinksMenuSection]);
 
+//Menu dictionary used for the cart
+let dict = new Object();
 
 //Functions needed to create the webpage layout
 function createLinkBoxLink(name, link) {
@@ -368,13 +370,15 @@ function createQuantityIncrementer(productObject) {
     minusButton.setAttribute("name", productObject.name + " decrease");
     minusButton.classList.add("product__incrementer--minus");
     minusButton.appendChild(minusButtonText);
+    minusButton.addEventListener("click", decrease, false);
     
     let quantityInput = document.createElement('input');
     quantityInput.setAttribute("type", "number");
     quantityInput.setAttribute("name", productObject.name + " quantity");
-    quantityInput.setAttribute("value", productObject.quantity);
+    quantityInput.setAttribute("value", "0");
     quantityInput.setAttribute("min", "0");
     quantityInput.classList.add("product__quantity");
+    quantityInput.addEventListener("change", inputFieldChange, false);
     
     let plusButton = document.createElement('button');
     let plusButtonText = document.createTextNode("+");
@@ -382,12 +386,31 @@ function createQuantityIncrementer(productObject) {
     plusButton.setAttribute("name", productObject.name + " increase");
     plusButton.classList.add("product__incrementer--plus");
     plusButton.appendChild(plusButtonText);
+    plusButton.addEventListener("click", increase, false);
 
     incrementerDiv.appendChild(minusButton);
     incrementerDiv.appendChild(quantityInput);
     incrementerDiv.appendChild(plusButton);
 
     return incrementerDiv;
+}
+
+function decrease(e) {
+    let inputField = e.target.parentElement.children[1];
+    if (parseInt(inputField.value) != 0) {
+        inputField.value = parseInt(inputField.value) - 1;
+    } 
+}
+
+function increase(e) {
+    let inputField = e.target.parentElement.children[1];
+    inputField.value = parseInt(inputField.value) + 1;
+}
+
+function inputFieldChange(e) {
+    if (!(parseInt(e.target.value) >= 0)) {
+        e.target.value = 0;
+    }
 }
 
 //Creating the actual webpage
