@@ -304,8 +304,8 @@ createCategory("Drinks", "drinks-anchor");
 let drinksGridDiv = createProductGrid();
 createDrinksGrid(drinksGridDiv);
 
-//var contentDivMenu = document.querySelector('#menu-content');
-//contentDivMenu.appendChild(menuPageMain);
+var contentDivMenu = document.querySelector('#menu-content');
+contentDivMenu.appendChild(menuPageMain);
 
 //Cart layout
 var cartMain = document.createElement('section');
@@ -324,13 +324,14 @@ cartMain.appendChild(cartOrderTable);
 
 //Cart table fixed header
 let tableHead = document.createElement("thead");
+let tableBody = document.createElement("tbody");
 let fixedHeaderRow = document.createElement("tr");
 fixedHeaderRow.setAttribute("id", "cart-tableRow__fixed");
 
 function colHeaderConstructor (colTitle, span) {
     var colHead = document.createElement('th');
     colHead.classList.add("cart-tableCol__header");
-    colHead.setAttribute("rowspan", span);
+    colHead.setAttribute("colspan", span);
     var colHeadText = document.createTextNode(colTitle);
     colHead.appendChild(colHeadText);
     fixedHeaderRow.appendChild(colHead);
@@ -374,6 +375,54 @@ STEntryConstructor("Total price: ", "cart-summary__counterDesignator");
 STEntryConstructor("jF €", "cart-summary__counter");
 
 cartFooter.appendChild(cartSummary);
+
+//Product add/modify/delete
+let i = 1;
+class TableEntry extends Food {
+    constructor (name, price, imageLocation, ammount, subTotal) {
+        super (name, price, imageLocation);
+        this.ammount = ammount; //int
+        this.subTotal = ammount * price; //int
+    }
+}
+
+function createTextCell(cellValue){
+    var cellTemp = document.createElement("td");
+    cellTemp.classList.add("cart-table__entry");
+    var cellTxt = document.createTextNode(cellValue);
+
+    cellTemp.appendChild(cellTxt);
+    tableBody.appendChild(cellTemp);
+}
+
+function createCartEntry (foodName, foodAmmount){
+    var foodImage = document.createElement("img");
+    foodImage.setAttribute("src", "../images/" + foodName.imageLocation);
+    foodImage.setAttribute("width", "45px");
+    foodImage.setAttribute("height", "45pxx");
+    var foodTd = document.createElement("td");
+    foodTd.classList.add("cart-table__entry");
+    foodTd.appendChild(foodImage);
+    var tPrice = foodAmmount * foodName.price;
+
+    createTextCell("x");
+    createTextCell(foodName.name);
+    tableBody.appendChild(foodTd);
+    createTextCell(foodName.price);
+    createTextCell(foodAmmount);
+    createTextCell(tPrice + " -");
+    //cartOrderTable.append("<tr>" + "<td>" + "</td>" +  "<td>" + foodName.name + "</td>" + "<td>" + foodImage + "</td>" + "<td>" + foodName.price + "</td>" + "<td>" + foodAmmount + "</td>" + "<td>" + "</td>" + "</tr>");
+}
+
+createCartEntry(salmonNigiri, 3);
+
+function updateCart (x) {
+    if (x > 0){
+
+    }
+}
+
+cartOrderTable.appendChild(tableBody);
 
 //Implement cart in div container
 let cartDivContainer = document.getElementById('cart-container');

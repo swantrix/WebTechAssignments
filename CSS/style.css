@@ -216,6 +216,11 @@ section.about-info__opening-hours li{
     font-size: 0.8em;
 }
 
+.cart-table__entry{
+    text-align: center;
+    border: 1px solid black;
+}
+
 #cart-footer{
     color: black;
     background-color: #3d5a80;
