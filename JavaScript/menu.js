@@ -524,8 +524,7 @@ function drawCart() {
     let cartText = cartParagraph.childNodes[0];
 
     if (!cart.size) {
-        let emptyCartText = document.createTextNode('Your cart is empty');
-        cartParagraph.replaceChild(emptyCartText, cartText);
+        cartParagraph.replaceChild(emptyCartText, cartText); //emptyCartText already exists outside the function
     }
 
     else {
