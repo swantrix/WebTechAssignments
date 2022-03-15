@@ -11,7 +11,12 @@ body {
     flex-direction: column;
 }
 
-.NavigationHeader{
+a:link, a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-header{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -20,7 +25,7 @@ body {
     justify-content: stretch;
 }
 
-.NH_TextLinks{
+.nav-header__text-links{
     font-size: 1.8em;
     display: flex;
         justify-content: flex-end;
@@ -29,18 +34,18 @@ body {
     margin-right: 10px;
 }
 
-.NH_TextLinks a{ /*The text-links in the header*/
+.nav-header__text-links a{ /*The text-links in the header*/
     padding: 2vw;
     border-radius: 0.2em;
     color: #131313;
     font-weight: bold;
 }
 
-.NH_TextLinks a:hover{
+.nav-header__text-links a:hover{
     background-color: #82a6da;
 }
 
-.content{
+main.content{
     display: flex;
     flex-flow: column;
     flex: 1 0 auto;
@@ -49,12 +54,12 @@ body {
     background-repeat: repeat;    
 }
 
-#Content_Main{
+#main-content{
     display: flex;
     flex-flow: column;
 }
 
-#MainHeader{
+#mainpage-content__header{
     font-size: 10vw;
     text-align: center;
     margin:0;
@@ -62,67 +67,88 @@ body {
 
 @media (max-width: 1300px) {
     /*makes header vertical on small screens*/
-    body .NavigationHeader{
+    body .nav-header{
         flex-flow: column;
     }
-    body .NH_TextLinks{
+    body .nav-header__text-links{
         display: flex;
         flex-flow: column;
         justify-content: space-around;
     }
 
-    body .NH_TextLinks a{ /*The text-links in the header*/
+    body .nav-header__text-links a{ /*The text-links in the header*/
         margin: 5px 0px 5px 0;
     }
 }
 
-img.Footer_ContactInfo-Image{
+img.footer__contact-image{
     float:left;
     padding:5px;
     width:10%;
     height:10%
 }
 
-p.Footer_ContactInfo-List{
+p.footer__contact-info-item{
     padding:5px;
 }
 
-.Footer{
+.footer{
     background-color: lightsteelblue;
     display:flex;
         justify-content: space-evenly;
         align-items: flex-start;
 }
 
-.Footer_ContactInfo{
+.footer__contact-info{
     text-align:left;
     color:black;
     padding:5px;
 }
 
-p.Footer_OurStory-List{
+p.footer__about-info-item{
     padding:5px;
     margin:0;
 }
 
-a.Footer_OurStory-List{
+a.footer__about-info-item{
     padding: 5px 0;
     margin:0;
     color:black;
 }
 
-.storyText, .mainPageContent{
+.story-text, .mainpage-content {
     padding: 2em;
     background-color:white;
     text-align: center;
 }
 
-.reservationForm, .aboutInfo {
+.reservation-form, .about-info, .menu {
     padding: 2em;
     background-color:white;
 }
 
-#aboutInfo_contactInfo_information{
+.menu__header {
+    font-size:2.5em;
+    text-align: center;
+}
+
+.reservation-form__header {
+    font-size: 18px;
+}
+
+.menu__category-header {
+    text-align:center;
+    font-size:1.5em;
+}
+
+.menu__menu-links {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+#contact-info-container{
     display: flex;
         justify-content: space-evenly;
         align-items: flex-start;
@@ -130,24 +156,25 @@ a.Footer_OurStory-List{
     text-align: center;
 }
 
-.aboutInfo_contactInfo_information-listitem{
+.contact-info-container__info-item{
     font-weight: bold;
 }
 
-a:link, a:visited {
-    text-decoration: none;
-    color: black;
+a.menu__link {
+    padding: 1em;
+    font-size: 1.1em;
+    text-decoration:underline;
 }
 
-section.aboutInfo_contactInfo td{
+section.about-info__contact-info td{
     text-align: center;
 }
 
-section.aboutInfo_openingHours li{
+section.about-info__opening-hours li{
     list-style-type: none;
 }
 
-
+/*old menu css items*/
 #linkbox{
     margin-left: auto;
     margin-right: auto;
@@ -199,6 +226,82 @@ table.menu {
     text-decoration: underline;
     font-weight: bold;
 }
+/*end old menu css items*/
+
+.category-container {
+    display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        flex-wrap: wrap;
+}
+
+.category-container__category-grid {
+    flex: 1;
+    display: grid;
+    grid-auto-rows: minmax(min-content, max-content); /* deze regel is van een website: https://www.mrbento.nl/c/deals overgenomen, nog even geen idee hoe het werkt */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* deze regel is van een website: https://www.mrbento.nl/c/deals overgenomen, nog even geen idee hoe het werkt */
+    grid-gap: 20px;
+}
+
+.category-grid__product {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    border: 1px solid lightgray;
+    border-radius: 1em;
+    padding: 20px;
+    transition-duration:0.4s;
+}
+
+.category-grid__product:hover {
+    border: 1px solid lightsteelblue;
+}
+
+h1.product__header {
+    text-align:center;
+    margin-top:0;
+}
+
+img.product__image {
+    float:right;    
+    border-radius:5%
+}
+
+.product__description {
+    margin: 5px 0px;
+}
+
+.product__incrementer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.product__quantity {
+    text-align:center;
+    margin:5px;
+    height:40px;
+    width:100px;
+    border: 1px solid lightsteelblue;
+    border-radius:1em;
+    font-size:150%;
+}
+
+.product__incrementer--minus, .product__incrementer--plus {
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid lightsteelblue;
+    margin: 5px;
+    transition-duration:0.4s;
+    font-size: 150%;
+    width:40px;
+    height:40px;
+}
+
+.product__incrementer--minus:hover, .product__incrementer--plus:hover {
+    background-color: lightsteelblue;
+}
 
 @media (max-width:1200px){
     div {
@@ -233,7 +336,7 @@ table.menu {
 }
 
 @media (min-width: 700px){
-    .reservationForm, .storyText, .aboutInfo, .mainPageContent{
+    .reservation-form, .story-text, .about-info, .mainpage-content, .menu{
         width:75%;
         margin:auto;
         margin-top:1.5%;
