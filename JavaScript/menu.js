@@ -5,7 +5,7 @@ class Menu {
     }
 }
 
-class Menusection { //Nog niet helemaal duidelijk waar deze dan voor nodig zijn?
+class Menusection {
     constructor (name, foodItems) {
         this.name = name; //string
         this.foodItems = foodItems; //array of objects of the type Food
@@ -110,6 +110,34 @@ let fullMenu = new Menu([sashimiMenuSection, nigiriMenuSection, makiMenuSection,
 
 //Menu dictionary used for the cart
 let dict = new Object();
+for (let menuSection of fullMenu.categories) {
+    for (let menuItem of menuSection.foodItems) {
+        createDictionaryEntry(menuItem);
+    }
+}
+
+function createDictionaryEntry (productObject) {
+    dict[productObject.name + " quantity"] = productObject;
+}
+
+//Creating cart contents
+let cart = new Map();
+updateCart();
+
+function updateCart() {
+    cart.clear(); //Clear map to remove all key item pairs. Makes sure items with quantity 0 are not present/removed from the map
+    for (let menuSection of fullMenu.categories) {
+        for (let menuItem of menuSection.foodItems) {
+            addToCart(menuItem);
+        }
+    }
+}
+
+function addToCart(productObject) {
+    if (productObject.quantity) {
+        cart.set(productObject.name, productObject.quantity);
+    }
+}
 
 //Functions needed to create the webpage layout
 function createLinkBoxLink(name, link) {
@@ -132,7 +160,7 @@ function createCategory(name, id) {
     menuPageMain.appendChild(categoryHeading);
 }
 
-function createProductGrid() { //werkt nog niet
+function createProductGrid() {
     let flexDiv = document.createElement('div');
     flexDiv.classList.add("category-container");
 
@@ -145,7 +173,7 @@ function createProductGrid() { //werkt nog niet
     return gridDiv;
 }
 
-function createSashimiGrid(gridDiv) { //werkt nog niet
+function createSashimiGrid(gridDiv) {
     let i = 0;
     while (sashimiMenuSection.foodItems[i]) {
         let sashimiObject = sashimiMenuSection.foodItems[i];
@@ -395,22 +423,39 @@ function createQuantityIncrementer(productObject) {
     return incrementerDiv;
 }
 
+//Events
 function decrease(e) {
     let inputField = e.target.parentElement.children[1];
     if (parseInt(inputField.value) != 0) {
         inputField.value = parseInt(inputField.value) - 1;
-    } 
+        changeProductQuantity(inputField.name, inputField.value);
+    }  
 }
 
 function increase(e) {
     let inputField = e.target.parentElement.children[1];
     inputField.value = parseInt(inputField.value) + 1;
+
+    changeProductQuantity(inputField.name, inputField.value);
 }
 
 function inputFieldChange(e) {
-    if (!(parseInt(e.target.value) >= 0)) {
+    let value = parseInt(e.target.value);
+    let name = e.target.name;
+    if (!(value >= 0) || isNaN(value) || value == -0) {
         e.target.value = 0;
     }
+
+    changeProductQuantity(name, e.target.value);
+}
+
+function changeProductQuantity(name, value) {
+    let productObject = dict[name];
+    productObject.quantity = parseInt(value);
+    updateCart();
+    drawCart();
+
+    console.log(productObject.name + " : " + productObject.quantity);
 }
 
 //Creating the actual webpage
@@ -421,6 +466,7 @@ let menuHeading = document.createElement('h1');
 let menuHeadingText = document.createTextNode('Our menu');
 menuHeading.classList.add("menu__header")
 menuHeading.appendChild(menuHeadingText);
+menuPageMain.appendChild(menuHeading);
 
 let menuLinkBox = document.createElement('p');
 menuLinkBox.classList.add("menu__menu-links");
@@ -430,8 +476,6 @@ createLinkBoxLink("Nigiri", "#nigiri-anchor");
 createLinkBoxLink("Maki", "#maki-anchor");
 createLinkBoxLink("Desserts", "#desserts-anchor");
 createLinkBoxLink("Drinks", "#drinks-anchor");
-
-menuPageMain.appendChild(menuHeading);
 menuPageMain.appendChild(menuLinkBox);
 
 createCategory("Sashimi", "sashimi-anchor");
@@ -459,13 +503,50 @@ createCategory("Drinks", "drinks-anchor");
 let drinksGridDiv = createProductGrid();
 createDrinksGrid(drinksGridDiv);
 
+let cartHeading = document.createElement('h1');
+let cartHeadingText = document.createTextNode('Your cart');
+cartHeading.classList.add("menu__header");
+cartHeading.appendChild(cartHeadingText);
+menuPageMain.appendChild(cartHeading);
+
+let cartItems = document.createElement('p');
+let emptyCartText = document.createTextNode('Your cart is empty');
+cartItems.classList.add("menu__cart");
+cartItems.appendChild(emptyCartText);
+menuPageMain.appendChild(cartItems);
+
 let contentDivMenu = document.querySelector('#menu-content');
 contentDivMenu.appendChild(menuPageMain);
 
 
-function incrementQuantity(e) {
-    e.preventDefault();
+function drawCart() {
+    let cartParagraph = document.querySelector('.menu__cart');
+    let cartText = cartParagraph.childNodes[0];
 
+    if (!cart.size) {
+        let emptyCartText = document.createTextNode('Your cart is empty');
+        cartParagraph.replaceChild(emptyCartText, cartText);
+    }
+
+    else {
+        let cartTextNew = document.createTextNode('');
+        //cartParagraph.replaceChild(cartTextNew, cartText);
+
+        let cartPrice = document.createTextNode('Total price: €' + totalPrice());
+        cartParagraph.replaceChild(cartPrice, cartText);
+    }
+}
+
+function totalPrice () {
+    let price = 0;
+    for (let menuSection of fullMenu.categories) {
+        for (let menuItem of menuSection.foodItems) {
+            if (menuItem.quantity) {
+                price += (parseFloat(menuItem.quantity) * parseFloat(menuItem.price));
+            }
+        }
+    }
+    return price;
 }
 
 /*//Cart layout

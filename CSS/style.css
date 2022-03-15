@@ -132,6 +132,10 @@ a.footer__about-info-item{
     text-align: center;
 }
 
+.menu__cart {
+    text-align: center;
+}
+
 .reservation-form__header {
     font-size: 18px;
 }
@@ -332,6 +336,11 @@ img.product__image {
 
     .title{
         width:100%;
+    }
+
+    img.product__image {
+        width: 70%;
+        float: none;
     }
 }
 
