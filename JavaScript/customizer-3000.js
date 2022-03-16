@@ -10,18 +10,19 @@ function createHTMLElementObject(htmlElementLink) {
     }
 
     /*These objects are somewhat volatile. If they do not exist in the current DOM structure, it will be an empty object
-    * Also, creates an array for the articles and asides, since there can be multiple*/
+    * Also, creates a nodelist for the articles and asides, since there can be multiple*/
 const header = createHTMLElementObject(document.querySelector("header"));
 const footer = createHTMLElementObject(document.querySelector("footer"));
 const body = createHTMLElementObject(document.querySelector("body"));
 const main = createHTMLElementObject(document.querySelector("main"));
 const aside = createHTMLElementObject(document.querySelector("aside"));
-const articleArray = Array.from(document.querySelectorAll("article"))
-const sectionArray = Array.from(document.querySelectorAll("section"))
+const articleArray = document.querySelectorAll("article");
+const sectionArray = document.querySelectorAll("section");
 
 const customizer = createHTMLElementObject(document.querySelector(".footer__customizer"))
 const targetButton = createHTMLElementObject(document.getElementById("footer__customizer__element-target-selector"))
 const changeButton = createHTMLElementObject(document.getElementById("footer__customizer__change-selector"))
+const applyButton = createHTMLElementObject(document.getElementById("footer__customizer__apply-button"));
 let changeValueButton = undefined; /*will be defined by the time it appears in the DOM*/
 
 /*these represent the object which is currently selected*/
@@ -96,13 +97,14 @@ function handleChangeSelect(){
             if (!!document.getElementById("footer__customizer__change-value-selector")){
                 document.getElementById("footer__customizer__change-value-selector").remove();
             }
-            customizer.htmlElementLink.appendChild(createChangeValueSelector("color").htmlElementLink);
+            customizer.htmlElementLink.insertBefore(createChangeValueSelector("color").htmlElementLink, applyButton.htmlElementLink)
+
             break;
         case "font_size":
             if (!!document.getElementById("footer__customizer__change-value-selector")){
                 document.getElementById("footer__customizer__change-value-selector").remove();
             }
-            customizer.htmlElementLink.appendChild(createChangeValueSelector("font_size").htmlElementLink);
+            customizer.htmlElementLink.insertBefore(createChangeValueSelector("font_size").htmlElementLink, applyButton.htmlElementLink)
             break;
     }
 }
@@ -111,18 +113,24 @@ function handleChangeSelect(){
 
 function handleChangeValueSelect(){
     selectedChangeValue = changeValueButton.htmlElementLink.value
-    customizer.htmlElementLink.appendChild(createApplyButton());
 }
 
-/*this function creates a button that can apply the chosen customisation*/
-function createApplyButton(){
-    let ApplyButton = document.createElement("button")
-    ApplyButton.setAttribute("type", "button");
-    ApplyButton.setAttribute("id", "footer__customizer__apply-button");
-    ApplyButton.setAttribute("value", "apply")
-    ApplyButton.textContent = "apply"
+applyButton.htmlElementLink.addEventListener("click", applyChange)
 
-    return ApplyButton;
+function applyChange(){
+    if (selectedChangeString === "color"){
+        if (selectedTarget == articleArray || selectedTarget == sectionArray){
+            selectedTarget.forEach(x => x.style.backgroundColor = selectedChangeValue)
+        }
+        else selectedTarget.htmlElementLink.style.backgroundColor = selectedChangeValue;
+    }
+
+    if (selectedChangeString === "font_size"){
+        if (selectedTarget == articleArray || selectedTarget == sectionArray){
+            selectedTarget.forEach(x => x.style.fontSize = selectedChangeValue + "px")
+        }
+        else selectedTarget.htmlElementLink.style.fontSize = selectedChangeValue + "px";
+    }
 }
 
 /*provides default options when the page loads, this should be at the end. */
