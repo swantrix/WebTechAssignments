@@ -56,13 +56,20 @@ function handleTargetSelect(){
    }
 }
 
-/*returns a <div> with all the appropriate children given the chosen change, color or font_size*/
+/*returns a <div> with all the appropriate children given the chosen change: background_color, text_color or font_size*/
 function createChangeValueSelector(change) {
     let changeValueSelectorContainer = document.createElement("div");
     let changeValueSelectorInput = document.createElement("input");
     let changeValueSelectorLabel = document.createElement("label");
 
     changeValueSelectorContainer.setAttribute("id", "footer__customizer__change-value-selector")
+
+    if (change === "background_color"){
+        changeValueSelectorInput.setAttribute("type", "color")
+        changeValueSelectorInput.setAttribute("id", "footer__customizer__change-value-selector--input")
+        changeValueSelectorLabel.setAttribute("for", "footer__customizer__change-value-selector--input")
+        changeValueSelectorLabel.textContent = "Background color: "
+    }
 
     if (change === "text_color"){
         changeValueSelectorInput.setAttribute("type", "color")
@@ -87,12 +94,19 @@ function createChangeValueSelector(change) {
     return createHTMLElementObject(changeValueSelectorContainer);
 }
 
+/*functionality for the change selector*/
 changeButton.htmlElementLink.addEventListener("input", handleChangeSelect);
 
 function handleChangeSelect(){
     selectedChangeString = changeButton.htmlElementLink.value
 
     switch (changeButton.htmlElementLink.value){
+        case "background_color":
+            if (!!document.getElementById("footer__customizer__change-value-selector")){
+                document.getElementById("footer__customizer__change-value-selector").remove()
+            }
+            customizer.htmlElementLink.insertBefore(createChangeValueSelector("background_color").htmlElementLink, applyButton.htmlElementLink)
+            break;
         case "text_color":
             if (!!document.getElementById("footer__customizer__change-value-selector")){
                 document.getElementById("footer__customizer__change-value-selector").remove();
@@ -105,13 +119,16 @@ function handleChangeSelect(){
             }
             customizer.htmlElementLink.insertBefore(createChangeValueSelector("font_size").htmlElementLink, applyButton.htmlElementLink)
             break;
+
     }
 }
 
+/*functionality for the change value selector*/
 function handleChangeValueSelect(){
     selectedChangeValue = changeValueButton.htmlElementLink.value
 }
 
+/*functionality for the apply button*/
 applyButton.htmlElementLink.addEventListener("click", applyChange)
 
 function applyChange(){
@@ -124,31 +141,25 @@ function applyChange(){
         selectedTarget.htmlElementLink.querySelectorAll("*").forEach(x => x.style.color = selectedChangeValue);
     }
 
+    if (selectedChangeString === "background_color"){
+        if (selectedTarget == articleArray || selectedTarget == sectionArray){
+            selectedTarget.forEach(x => x.style.backgroundColor = selectedChangeValue)
+        }
+        else selectedTarget.htmlElementLink.style.backgroundColor = selectedChangeValue;
+    }
+
     if (selectedChangeString === "font_size"){
         if (selectedTarget == articleArray || selectedTarget == sectionArray){
-            selectedTarget.forEach(x => x.style.fontSize = selectedChangeValue + "px")
-        }
-        else
+            selectedTarget.forEach(x => x.style.fontSize = selectedChangeValue + "px");
+        } else
             selectedTarget.htmlElementLink.style.fontSize = selectedChangeValue + "px";
-
     }
 }
 
-
-
-/*provides default options when the page loads, this should be at the end. */
+/*provides default options when the page loads*/
 targetButton.htmlElementLink.value = "header";
 handleTargetSelect();
-changeButton.htmlElementLink.value = "color";
+changeButton.htmlElementLink.value = "text_color";
 handleChangeSelect();
 changeButton.htmlElementLink.value = "#000000";
 handleChangeValueSelect();
-
-
-/*required functionality:
--should work on body, header, footer, aside, articles and sections
--should change at least color and font size
-*/
-
-/*TO DO:
-* haal ID's weg bij footer customizer containers, behalve als ze gebruikt worden*/
