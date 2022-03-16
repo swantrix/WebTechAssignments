@@ -197,20 +197,7 @@ table.menu {
     margin-right: auto;
     width: 50%;
     }
-.links{
-    background-color: lightsteelblue;
-    color: #cf8e58;
-    border-radius: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-}
-.section{
-    color: #293241;
-    text-decoration-line: underline;
-    font-weight: bold;
-    font-size: 20px;
-}
+
 .name{
     font-size: 16px;
     color: #cf8e58;
@@ -305,11 +292,6 @@ img.product__image {
 }
 
 @media (max-width:1200px){
-    div {
-        margin: 0;
-        width: auto;
-    }
-
     table.menu{
         width: 75%;
         margin: 0 auto;
@@ -321,11 +303,6 @@ img.product__image {
 }
 
 @media (max-width: 700px) {
-    div {
-        margin: 0;
-        width: auto;
-    }
-
     table.menu{
         width: 100%;
         margin: 0;

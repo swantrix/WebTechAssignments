@@ -118,16 +118,18 @@ applyButton.htmlElementLink.addEventListener("click", applyChange)
 function applyChange(){
     if (selectedChangeString === "color"){
         if (selectedTarget == articleArray || selectedTarget == sectionArray){
-            selectedTarget.forEach(x => x.style.backgroundColor = selectedChangeValue)
+            selectedTarget.forEach(x => x.style.color = selectedChangeValue)
         }
-        else selectedTarget.htmlElementLink.style.backgroundColor = selectedChangeValue;
+        else selectedTarget.htmlElementLink.style.color = selectedChangeValue;
     }
 
     if (selectedChangeString === "font_size"){
         if (selectedTarget == articleArray || selectedTarget == sectionArray){
             selectedTarget.forEach(x => x.style.fontSize = selectedChangeValue + "px")
         }
-        else selectedTarget.htmlElementLink.style.fontSize = selectedChangeValue + "px";
+        else
+            selectedTarget.htmlElementLink.style.fontSize = selectedChangeValue + "px";
+
     }
 }
 
