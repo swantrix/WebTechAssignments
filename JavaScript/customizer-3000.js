@@ -109,8 +109,6 @@ function handleChangeSelect(){
     }
 }
 
-/*nvm all this, just make the apply button only be at the very end of the flexbox and always visible, set the value to be black at the start and then just read the value whenever you click the apply button*/
-
 function handleChangeValueSelect(){
     selectedChangeValue = changeValueButton.htmlElementLink.value
 }
@@ -133,11 +131,16 @@ function applyChange(){
     }
 }
 
+
+
 /*provides default options when the page loads, this should be at the end. */
 targetButton.htmlElementLink.value = "header";
 handleTargetSelect();
 changeButton.htmlElementLink.value = "color";
 handleChangeSelect();
+changeButton.htmlElementLink.value = "#000000";
+handleChangeValueSelect();
+
 
 /*required functionality:
 -should work on body, header, footer, aside, articles and sections

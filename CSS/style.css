@@ -97,6 +97,7 @@ p.footer__contact-info-item{
     display:flex;
         justify-content: space-evenly;
         align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .footer__contact-info{
