@@ -304,11 +304,6 @@ img.product__image {
 }
 
 @media (max-width:1200px){
-    div {
-        margin: 0;
-        width: auto;
-    }
-
     table.menu{
         width: 75%;
         margin: 0 auto;
@@ -320,11 +315,6 @@ img.product__image {
 }
 
 @media (max-width: 700px) {
-    div {
-        margin: 0;
-        width: auto;
-    }
-
     table.menu{
         width: 100%;
         margin: 0;
