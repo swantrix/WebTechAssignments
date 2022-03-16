@@ -12,10 +12,66 @@ const changeButton = document.getElementById("footer__customizer__change-selecto
 const applyButton = document.getElementById("footer__customizer__apply-button");
 let changeValueButton = undefined; /*will be defined by the time it appears in the DOM*/
 
+
 /*these represent the object which is currently selected*/
 let selectedTarget = undefined;
 let selectedChangeString = undefined;
 let selectedChangeValue = undefined;
+
+/*creates possible target options*/
+
+    /*checks if Target Option already exists and if not, creates it.*/
+    function createTargetOption(targetString){
+        let alreadyExist = false;
+        let targetSelectorChildren = document.getElementById("footer__customizer__element-target-selector").children
+        for (let item = 0; item < targetSelectorChildren.length; item++){
+            if (targetSelectorChildren[item].innerText === targetString){
+                alreadyExist = true;
+            }
+        }
+
+        if (!alreadyExist){
+            let targetOption = document.createElement("option");
+            targetOption.setAttribute("value", targetString)
+            targetOption.innerText = targetString;
+            targetButton.appendChild(targetOption);
+        }
+    }
+
+    /*since body always exists, always creating this option is safe*/
+    createTargetOption("body")
+
+    function optionCreator(toCheck){
+        /*1 check to see if this is an element
+        2 if true, check if it is one of the possible targets
+        3 if true, create appropriate button (checking whether or not the option already exists happens in createTargetOption())*/
+        if (toCheck instanceof Element){
+            switch (toCheck.tagName){
+                case "HEADER":
+                    createTargetOption("header")
+                    break;
+                case "FOOTER":
+                    createTargetOption("footer")
+                    break;
+                case "MAIN":
+                    createTargetOption("main")
+                    break;
+                case "ASIDE":
+                    createTargetOption("aside")
+                    break;
+                case "ARTICLE":
+                    createTargetOption("article")
+                    break;
+                case "SECTION":
+                    createTargetOption("section")
+                    break;
+                default: return;
+            }
+        }
+    }
+
+    body.querySelectorAll("*").forEach(x => optionCreator(x))
+
 
 targetButton.addEventListener("input", handleTargetSelect);
 
@@ -85,6 +141,7 @@ function createChangeValueSelector(change) {
     return changeValueSelectorContainer;
 }
 
+
 /*functionality for the change selector*/
 changeButton.addEventListener("input", handleChangeSelect);
 
@@ -119,6 +176,7 @@ function handleChangeValueSelect(){
     selectedChangeValue = changeValueButton.value
 }
 
+
 /*functionality for the apply button*/
 applyButton.addEventListener("click", applyChange)
 
@@ -146,6 +204,7 @@ function applyChange(){
             selectedTarget.style.fontSize = selectedChangeValue + "px";
     }
 }
+
 
 /*provides default options when the page loads*/
 targetButton.value = "header";
