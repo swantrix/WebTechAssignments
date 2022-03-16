@@ -64,11 +64,11 @@ function createChangeValueSelector(change) {
 
     changeValueSelectorContainer.setAttribute("id", "footer__customizer__change-value-selector")
 
-    if (change === "color"){
+    if (change === "text_color"){
         changeValueSelectorInput.setAttribute("type", "color")
         changeValueSelectorInput.setAttribute("id", "footer__customizer__change-value-selector--input")
         changeValueSelectorLabel.setAttribute("for", "footer__customizer__change-value-selector--input")
-        changeValueSelectorLabel.textContent = "Color: "
+        changeValueSelectorLabel.textContent = "Text color: "
     }
 
     if (change === "font_size"){
@@ -93,12 +93,11 @@ function handleChangeSelect(){
     selectedChangeString = changeButton.htmlElementLink.value
 
     switch (changeButton.htmlElementLink.value){
-        case "color":
+        case "text_color":
             if (!!document.getElementById("footer__customizer__change-value-selector")){
                 document.getElementById("footer__customizer__change-value-selector").remove();
             }
-            customizer.htmlElementLink.insertBefore(createChangeValueSelector("color").htmlElementLink, applyButton.htmlElementLink)
-
+            customizer.htmlElementLink.insertBefore(createChangeValueSelector("text_color").htmlElementLink, applyButton.htmlElementLink)
             break;
         case "font_size":
             if (!!document.getElementById("footer__customizer__change-value-selector")){
@@ -116,7 +115,7 @@ function handleChangeValueSelect(){
 applyButton.htmlElementLink.addEventListener("click", applyChange)
 
 function applyChange(){
-    if (selectedChangeString === "color"){
+    if (selectedChangeString === "text_color"){
         if (selectedTarget == articleArray || selectedTarget == sectionArray){
             selectedTarget.forEach(x => x.style.color = selectedChangeValue)
             selectedTarget.forEach(x => x.querySelectorAll("*").forEach(x => x.style.color = selectedChangeValue));
