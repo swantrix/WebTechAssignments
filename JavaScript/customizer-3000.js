@@ -53,6 +53,10 @@ function handleTargetSelect(){
            break;
        case "section" :
            selectedTarget = sectionArray;
+           break;
+       case "aside":
+           selectedTarget = aside;
+           break;
    }
 }
 
