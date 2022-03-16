@@ -119,8 +119,10 @@ function applyChange(){
     if (selectedChangeString === "color"){
         if (selectedTarget == articleArray || selectedTarget == sectionArray){
             selectedTarget.forEach(x => x.style.color = selectedChangeValue)
+            selectedTarget.forEach(x => x.querySelectorAll("*").forEach(x => x.style.color = selectedChangeValue));
         }
         else selectedTarget.htmlElementLink.style.color = selectedChangeValue;
+        selectedTarget.htmlElementLink.querySelectorAll("*").forEach(x => x.style.color = selectedChangeValue);
     }
 
     if (selectedChangeString === "font_size"){
