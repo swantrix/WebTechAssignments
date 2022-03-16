@@ -137,7 +137,7 @@ applyButton.htmlElementLink.addEventListener("click", applyChange)
 
 function applyChange(){
     if (selectedChangeString === "text_color"){
-        if (selectedTarget == articleArray || selectedTarget == sectionArray){
+        if (selectedTarget === articleArray || selectedTarget === sectionArray){
             selectedTarget.forEach(x => x.style.color = selectedChangeValue)
             selectedTarget.forEach(x => x.querySelectorAll("*").forEach(x => x.style.color = selectedChangeValue));
         }
@@ -146,14 +146,14 @@ function applyChange(){
     }
 
     if (selectedChangeString === "background_color"){
-        if (selectedTarget == articleArray || selectedTarget == sectionArray){
+        if (selectedTarget === articleArray || selectedTarget === sectionArray){
             selectedTarget.forEach(x => x.style.backgroundColor = selectedChangeValue)
         }
         else selectedTarget.htmlElementLink.style.backgroundColor = selectedChangeValue;
     }
 
     if (selectedChangeString === "font_size"){
-        if (selectedTarget == articleArray || selectedTarget == sectionArray){
+        if (selectedTarget === articleArray || selectedTarget === sectionArray){
             selectedTarget.forEach(x => x.style.fontSize = selectedChangeValue + "px");
         } else
             selectedTarget.htmlElementLink.style.fontSize = selectedChangeValue + "px";
