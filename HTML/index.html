@@ -46,7 +46,7 @@
             </article>
             <form class="footer__customizer">
                 <h4>Page customizer 3000</h4>
-                <div>
+                <div class="footer__customizer--container" id="footer__customizer__element-target-selector--container">
                     <label for="footer__customizer__element-target-selector">Target:</label>
                     <select name="target" id="footer__customizer__element-target-selector">
                         <option value="header">header</option>
@@ -57,22 +57,11 @@
                         <option value="section">footer</option>
                     </select>
                 </div>
-                <div>
-                    <label for="footer__customizer__change-selector">Change type: </label>
+                <div class="footer__customizer--container" id="footer__customizer__change-selector--container">
+                    <label for="footer__customizer__change-selector">Change: </label>
                     <select name="change" id="footer__customizer__change-selector">
                         <option value="color">color</option>
                         <option value="font_size">font size</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="footer__customizer__change-value-selector">Change: </label>
-                    <select name="changevalue" id="footer__customizer__change-value-selector">
-                        <option value="blue">blue</option>
-                        <option value="red">red</option>
-                        <option value="green">green</option>
-                        <option value="small">small</option>
-                        <option value="medium">medium</option>
-                        <option value="large">large</option>
                     </select>
                 </div>
                 <button type="button" id="footer__customizer__apply-button" value="apply">apply</button>
