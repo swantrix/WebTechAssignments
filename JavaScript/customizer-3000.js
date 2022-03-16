@@ -1,28 +1,15 @@
-function createHTMLElementObject(htmlElementLink) {
-    if (htmlElementLink instanceof Element){
-        return {
-            htmlElementLink : htmlElementLink,
-            color : getComputedStyle(htmlElementLink).getPropertyValue('background-color'),
-            fontSize : getComputedStyle(htmlElementLink).getPropertyValue('font-size'),
-        };
-    }
-    return {};
-    }
-
-    /*These objects are somewhat volatile. If they do not exist in the current DOM structure, it will be an empty object
-    * Also, creates a nodelist for the articles and asides, since there can be multiple*/
-const header = createHTMLElementObject(document.querySelector("header"));
-const footer = createHTMLElementObject(document.querySelector("footer"));
-const body = createHTMLElementObject(document.querySelector("body"));
-const main = createHTMLElementObject(document.querySelector("main"));
-const aside = createHTMLElementObject(document.querySelector("aside"));
+const header = document.querySelector("header");
+const footer = document.querySelector("footer");
+const body = document.querySelector("body");
+const main = document.querySelector("main");
+const aside = document.querySelector("aside");
 const articleArray = document.querySelectorAll("article");
 const sectionArray = document.querySelectorAll("section");
 
-const customizer = createHTMLElementObject(document.querySelector(".footer__customizer"))
-const targetButton = createHTMLElementObject(document.getElementById("footer__customizer__element-target-selector"))
-const changeButton = createHTMLElementObject(document.getElementById("footer__customizer__change-selector"))
-const applyButton = createHTMLElementObject(document.getElementById("footer__customizer__apply-button"));
+const customizer = document.querySelector(".footer__customizer")
+const targetButton = document.getElementById("footer__customizer__element-target-selector")
+const changeButton = document.getElementById("footer__customizer__change-selector")
+const applyButton = document.getElementById("footer__customizer__apply-button");
 let changeValueButton = undefined; /*will be defined by the time it appears in the DOM*/
 
 /*these represent the object which is currently selected*/
@@ -30,10 +17,10 @@ let selectedTarget = undefined;
 let selectedChangeString = undefined;
 let selectedChangeValue = undefined;
 
-targetButton.htmlElementLink.addEventListener("input", handleTargetSelect);
+targetButton.addEventListener("input", handleTargetSelect);
 
 function handleTargetSelect(){
-   let selectedTargetString = targetButton.htmlElementLink.value;
+   let selectedTargetString = targetButton.value;
 
    switch (selectedTargetString){
        case "header" :
@@ -92,36 +79,36 @@ function createChangeValueSelector(change) {
     changeValueSelectorContainer.appendChild(changeValueSelectorLabel);
     changeValueSelectorContainer.appendChild(changeValueSelectorInput);
 
-    changeValueButton = createHTMLElementObject(changeValueSelectorInput);
-    changeValueButton.htmlElementLink.addEventListener("input", handleChangeValueSelect)
+    changeValueButton = changeValueSelectorInput;
+    changeValueButton.addEventListener("input", handleChangeValueSelect)
 
-    return createHTMLElementObject(changeValueSelectorContainer);
+    return changeValueSelectorContainer;
 }
 
 /*functionality for the change selector*/
-changeButton.htmlElementLink.addEventListener("input", handleChangeSelect);
+changeButton.addEventListener("input", handleChangeSelect);
 
 function handleChangeSelect(){
-    selectedChangeString = changeButton.htmlElementLink.value
+    selectedChangeString = changeButton.value
 
-    switch (changeButton.htmlElementLink.value){
+    switch (changeButton.value){
         case "background_color":
             if (!!document.getElementById("footer__customizer__change-value-selector")){
                 document.getElementById("footer__customizer__change-value-selector").remove()
             }
-            customizer.htmlElementLink.insertBefore(createChangeValueSelector("background_color").htmlElementLink, applyButton.htmlElementLink)
+            customizer.insertBefore(createChangeValueSelector("background_color"), applyButton)
             break;
         case "text_color":
             if (!!document.getElementById("footer__customizer__change-value-selector")){
                 document.getElementById("footer__customizer__change-value-selector").remove();
             }
-            customizer.htmlElementLink.insertBefore(createChangeValueSelector("text_color").htmlElementLink, applyButton.htmlElementLink)
+            customizer.insertBefore(createChangeValueSelector("text_color"), applyButton)
             break;
         case "font_size":
             if (!!document.getElementById("footer__customizer__change-value-selector")){
                 document.getElementById("footer__customizer__change-value-selector").remove();
             }
-            customizer.htmlElementLink.insertBefore(createChangeValueSelector("font_size").htmlElementLink, applyButton.htmlElementLink)
+            customizer.insertBefore(createChangeValueSelector("font_size"), applyButton)
             break;
 
     }
@@ -129,11 +116,11 @@ function handleChangeSelect(){
 
 /*functionality for the change value selector*/
 function handleChangeValueSelect(){
-    selectedChangeValue = changeValueButton.htmlElementLink.value
+    selectedChangeValue = changeValueButton.value
 }
 
 /*functionality for the apply button*/
-applyButton.htmlElementLink.addEventListener("click", applyChange)
+applyButton.addEventListener("click", applyChange)
 
 function applyChange(){
     if (selectedChangeString === "text_color"){
@@ -141,29 +128,29 @@ function applyChange(){
             selectedTarget.forEach(x => x.style.color = selectedChangeValue)
             selectedTarget.forEach(x => x.querySelectorAll("*").forEach(x => x.style.color = selectedChangeValue));
         }
-        else selectedTarget.htmlElementLink.style.color = selectedChangeValue;
-        selectedTarget.htmlElementLink.querySelectorAll("*").forEach(x => x.style.color = selectedChangeValue);
+        else selectedTarget.style.color = selectedChangeValue;
+        selectedTarget.querySelectorAll("*").forEach(x => x.style.color = selectedChangeValue);
     }
 
     if (selectedChangeString === "background_color"){
         if (selectedTarget === articleArray || selectedTarget === sectionArray){
             selectedTarget.forEach(x => x.style.backgroundColor = selectedChangeValue)
         }
-        else selectedTarget.htmlElementLink.style.backgroundColor = selectedChangeValue;
+        else selectedTarget.style.backgroundColor = selectedChangeValue;
     }
 
     if (selectedChangeString === "font_size"){
         if (selectedTarget === articleArray || selectedTarget === sectionArray){
             selectedTarget.forEach(x => x.style.fontSize = selectedChangeValue + "px");
         } else
-            selectedTarget.htmlElementLink.style.fontSize = selectedChangeValue + "px";
+            selectedTarget.style.fontSize = selectedChangeValue + "px";
     }
 }
 
 /*provides default options when the page loads*/
-targetButton.htmlElementLink.value = "header";
+targetButton.value = "header";
 handleTargetSelect();
-changeButton.htmlElementLink.value = "text_color";
+changeButton.value = "text_color";
 handleChangeSelect();
-changeButton.htmlElementLink.value = "#000000";
+changeButton.value = "#000000";
 handleChangeValueSelect();
