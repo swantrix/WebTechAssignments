@@ -5,7 +5,7 @@ class Menu {
     }
 }
 
-class Menusection { //Nog niet helemaal duidelijk waar deze dan voor nodig zijn?
+class Menusection {
     constructor (name, foodItems) {
         this.name = name; //string
         this.foodItems = foodItems; //array of objects of the type Food
@@ -110,6 +110,34 @@ let fullMenu = new Menu([sashimiMenuSection, nigiriMenuSection, makiMenuSection,
 
 //Menu dictionary used for the cart
 let dict = new Object();
+for (let menuSection of fullMenu.categories) {
+    for (let menuItem of menuSection.foodItems) {
+        createDictionaryEntry(menuItem);
+    }
+}
+
+function createDictionaryEntry (productObject) {
+    dict[productObject.name + " quantity"] = productObject;
+}
+
+//Creating cart contents
+let cart = new Map();
+updateCart();
+
+function updateCart() {
+    cart.clear(); //Clear map to remove all key item pairs. Makes sure items with quantity 0 are not present/removed from the map
+    for (let menuSection of fullMenu.categories) {
+        for (let menuItem of menuSection.foodItems) {
+            addToCart(menuItem);
+        }
+    }
+}
+
+function addToCart(productObject) {
+    if (productObject.quantity) {
+        cart.set(productObject.name, productObject.quantity);
+    }
+}
 
 //Functions needed to create the webpage layout
 function createLinkBoxLink(name, link) {
@@ -132,7 +160,7 @@ function createCategory(name, id) {
     menuPageMain.appendChild(categoryHeading);
 }
 
-function createProductGrid() { //werkt nog niet
+function createProductGrid() {
     let flexDiv = document.createElement('div');
     flexDiv.classList.add("category-container");
 
@@ -145,7 +173,7 @@ function createProductGrid() { //werkt nog niet
     return gridDiv;
 }
 
-function createSashimiGrid(gridDiv) { //werkt nog niet
+function createSashimiGrid(gridDiv) {
     let i = 0;
     while (sashimiMenuSection.foodItems[i]) {
         let sashimiObject = sashimiMenuSection.foodItems[i];
@@ -165,14 +193,17 @@ function createSashimiGrid(gridDiv) { //werkt nog niet
         let productImage = createProductImage(sashimiObject);
         productDiv.appendChild(productImage);
 
-        let productDesc = document.createElement('p');
-        let productDescText = document.createTextNode("Ingredients: " + sashimiObject.ingredients);
-        productDesc.appendChild(productDescText);
-        productDiv.appendChild(productDesc);
+        let productDesc = document.createElement('div');
+
+        let productIngr = document.createElement('p');
+        let productIngrText = document.createTextNode("Ingredients: " + sashimiObject.ingredients);
+        productIngr.appendChild(productIngrText);
+        productDesc.appendChild(productIngr);
 
         let productPrice = createProductPrice(sashimiObject)
-        productDiv.appendChild(productPrice);
+        productDesc.appendChild(productPrice);
 
+        productDiv.appendChild(productDesc);
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
@@ -205,21 +236,24 @@ function createNigiriOrMakiGrid(gridDiv, productObjects) {
         let productImage = createProductImage(productObject);
         productDiv.appendChild(productImage);
 
-        let productDesc = document.createElement('p');
-        let productDescText = document.createTextNode("Ingredients: " + productObject.ingredients);
-        productDesc.appendChild(productDescText);
-        productDiv.appendChild(productDesc);
+        let productDesc = document.createElement('div');
+
+        let productIngr = document.createElement('p');
+        let productIngrText = document.createTextNode("Ingredients: " + productObject.ingredients);
+        productIngr.appendChild(productIngrText);
+        productDesc.appendChild(productIngr);
 
         if (productObject.vegetarian) {
             let vegetarian = document.createElement('p');
             let vegetarianText = document.createTextNode("Vegetarian");
             vegetarian.appendChild(vegetarianText);
-            productDiv.appendChild(vegetarian);
+            productDesc.appendChild(vegetarian);
         }
 
         let productPrice = createProductPrice(productObject);
-        productDiv.appendChild(productPrice);
+        productDesc.appendChild(productPrice);
 
+        productDiv.appendChild(productDesc);
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
@@ -252,16 +286,19 @@ function createDessertsGrid(gridDiv) {
         let productImage = createProductImage(dessertObject);
         productDiv.appendChild(productImage);
 
+        let productDesc = document.createElement('div');
+
         if (dessertObject.allergens) {
-            let productDesc = document.createElement('p');
-            let productDescText = document.createTextNode("Allergens: " + dessertObject.allergens);
-            productDesc.appendChild(productDescText);
-            productDiv.appendChild(productDesc);
+            let productAllergen = document.createElement('p');
+            let productAllergenText = document.createTextNode("Allergens: " + dessertObject.allergens);
+            productAllergen.appendChild(productAllergenText);
+            productDesc.appendChild(productAllergen);
         }
         
         let productPrice = createProductPrice(dessertObject);
-        productDiv.appendChild(productPrice);
+        productDesc.appendChild(productPrice);
 
+        productDiv.appendChild(productDesc);
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
@@ -290,25 +327,28 @@ function createDrinksGrid(gridDiv) {
         //Adding product information and image
         let productDiv = document.createElement('div');
         productDiv.classList.add("product__description");
-        
+
         let productImage = createProductImage(drinksObject);
         productDiv.appendChild(productImage);
 
-        let productDesc = document.createElement('p');
-        let productDescText = document.createTextNode("Volume: " + drinksObject.volume);
-        productDesc.appendChild(productDescText);
-        productDiv.appendChild(productDesc);       
+        let productDesc = document.createElement('div');
+
+        let productVolume = document.createElement('p');
+        let productVolumeText = document.createTextNode("Volume: " + drinksObject.volume);
+        productVolume.appendChild(productVolumeText);
+        productDesc.appendChild(productVolume);       
 
         if (!drinksObject.alcoholFree) {
             let alcoholIndicator = document.createElement('p');
             let alcoholText = document.createTextNode("Contains alcohol, 18+");
             alcoholIndicator.appendChild(alcoholText);
-            productDiv.appendChild(alcoholIndicator);
+            productDesc.appendChild(alcoholIndicator);
         }
 
         let productPrice = createProductPrice(drinksObject);
-        productDiv.appendChild(productPrice);
+        productDesc.appendChild(productPrice);
 
+        productDiv.appendChild(productDesc);
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
@@ -395,22 +435,39 @@ function createQuantityIncrementer(productObject) {
     return incrementerDiv;
 }
 
+//Events
 function decrease(e) {
     let inputField = e.target.parentElement.children[1];
     if (parseInt(inputField.value) != 0) {
         inputField.value = parseInt(inputField.value) - 1;
-    } 
+        changeProductQuantity(inputField.name, inputField.value);
+    }  
 }
 
 function increase(e) {
     let inputField = e.target.parentElement.children[1];
     inputField.value = parseInt(inputField.value) + 1;
+
+    changeProductQuantity(inputField.name, inputField.value);
 }
 
 function inputFieldChange(e) {
-    if (!(parseInt(e.target.value) >= 0)) {
+    let value = parseInt(e.target.value);
+    let name = e.target.name;
+    if (!(value >= 0) || isNaN(value) || value == -0) {
         e.target.value = 0;
     }
+
+    changeProductQuantity(name, e.target.value);
+}
+
+function changeProductQuantity(name, value) {
+    let productObject = dict[name];
+    productObject.quantity = parseInt(value);
+    updateCart();
+    drawCart();
+
+    console.log(productObject.name + " : " + productObject.quantity);
 }
 
 //Creating the actual webpage
@@ -421,6 +478,7 @@ let menuHeading = document.createElement('h1');
 let menuHeadingText = document.createTextNode('Our menu');
 menuHeading.classList.add("menu__header")
 menuHeading.appendChild(menuHeadingText);
+menuPageMain.appendChild(menuHeading);
 
 let menuLinkBox = document.createElement('p');
 menuLinkBox.classList.add("menu__menu-links");
@@ -430,8 +488,6 @@ createLinkBoxLink("Nigiri", "#nigiri-anchor");
 createLinkBoxLink("Maki", "#maki-anchor");
 createLinkBoxLink("Desserts", "#desserts-anchor");
 createLinkBoxLink("Drinks", "#drinks-anchor");
-
-menuPageMain.appendChild(menuHeading);
 menuPageMain.appendChild(menuLinkBox);
 
 createCategory("Sashimi", "sashimi-anchor");
@@ -459,53 +515,110 @@ createCategory("Drinks", "drinks-anchor");
 let drinksGridDiv = createProductGrid();
 createDrinksGrid(drinksGridDiv);
 
+let cartHeading = document.createElement('h1');
+let cartHeadingText = document.createTextNode('Your cart');
+cartHeading.classList.add("menu__header");
+cartHeading.appendChild(cartHeadingText);
+menuPageMain.appendChild(cartHeading);
+
+let cartItems = document.createElement('div');
+let emptyCart = document.createElement('p');
+let emptyCartText = document.createTextNode('Your cart is empty');
+cartItems.classList.add("menu__cart");
+emptyCart.appendChild(emptyCartText);
+cartItems.appendChild(emptyCart);
+menuPageMain.appendChild(cartItems);
+
+let submitButton = createSubmit();
+menuPageMain.appendChild(submitButton);
+
 let contentDivMenu = document.querySelector('#menu-content');
 contentDivMenu.appendChild(menuPageMain);
 
+//Cart functionality
+function drawCart() {
+    let cartItems = document.querySelector('.menu__cart');
+    deleteChildNodes(cartItems); //Remove all items from cart
 
-function incrementQuantity(e) {
-    e.preventDefault();
+    if (!cart.size) { //When cart is empty
+        cartItems.appendChild(emptyCart); //emptyCart already exists outside the function
+    }
 
+    else { //When cart is not empty
+        addItemsToCart(cartItems);
+        
+        let cartPrice = document.createElement('p');
+        let cartPriceText = document.createElement('strong');
+        let cartPriceTextTotal = document.createTextNode('Total price:');
+        cartPriceText.appendChild(cartPriceTextTotal);
+        let cartPriceTotal = document.createTextNode(' €' + totalPrice().toFixed(2));
+        cartPrice.appendChild(cartPriceText);
+        cartPrice.appendChild(cartPriceTotal);
+        cartItems.appendChild(cartPrice);
+    }
+
+    let productFields = document.querySelectorAll(".category-grid__product");
+    for (let productField of productFields) {
+        let inputField = productField.children[2].children[1];
+        if (parseInt(inputField.value) > 0) {
+            productField.classList.add("category-grid__product--selected");
+        }
+        
+        else {
+            productField.classList.remove("category-grid__product--selected");
+        }
+    }
 }
 
-/*//Cart layout
-var cartMain = document.createElement('section');
-cartMain.setAttribute("id", "cart-section");
-
-var cartTitle = document.createElement('h1');
-cartTitle.setAttribute("id", "cart-title");
-var cartTitleText = document.createTextNode('Your cart:');
-cartTitle.appendChild(cartTitleText);
-cartMain.appendChild(cartTitle);
-
-var cartOrderTable = document.createElement('table');
-cartOrderTable.setAttribute("id", "cart-table");
-cartMain.appendChild(cartOrderTable);
-
-//Fixed header row 
-var fixedHeaderRow = document.createElement("tr");
-fixedHeaderRow.setAttribute("id", "cart-tableRow__fixed");
-
-function colHeaderConstructor (colTitle, span) {
-    var colHead = document.createElement('th');
-    colHead.classList.add("cart-tableCol__header");
-    colHead.setAttribute("rowspan", span);
-    var colHeadText = document.createTextNode(colTitle);
-    colHead.appendChild(colHeadText);
-    fixedHeaderRow.appendChild(colHead);
+function totalPrice () {
+    let price = 0;
+    for (let menuSection of fullMenu.categories) {
+        for (let menuItem of menuSection.foodItems) {
+            if (menuItem.quantity) {
+                price += (parseFloat(menuItem.quantity) * parseFloat(menuItem.price));
+            }
+        }
+    }
+    return price;
 }
 
-colHeaderConstructor("Product", 3);
-colHeaderConstructor("Unit price", 1);
-colHeaderConstructor("Quantity", 1);
-colHeaderConstructor("Subtotal", 1);
+function deleteChildNodes(cartItems) {
+    let child = cartItems.lastElementChild;
+    while(child) {
+        cartItems.removeChild(child);
+        child = cartItems.lastElementChild;
+    }
+}
 
-cartOrderTable.appendChild(fixedHeaderRow)
+function addItemsToCart(cartItems) {
+    for (let menuSection of fullMenu.categories) {
+        for (let menuItem of menuSection.foodItems) {
+            if (menuItem.quantity) {
+                let cartItem = document.createElement('p');
+                let cartItemText = document.createTextNode(menuItem.quantity + "x " + menuItem.name);
+                cartItem.appendChild(cartItemText);
+                cartItems.appendChild(cartItem);
+            }
+        }
+    }
+}
 
-//Footer
+function createSubmit(){
+    let submitButton = document.createElement('button');
+    let submitText = document.createTextNode('Submit your order');
+    submitButton.setAttribute("type", "submit");
+    submitButton.setAttribute("name", "submit-button");
+    submitButton.classList.add("menu__submit");
+    submitButton.appendChild(submitText);
+    submitButton.addEventListener("click", submitOrder, false);
+    return submitButton;
+}
 
-
-
-//Implement cart in div container
-var cartDivContainer = document.getElementById('cart-container');
-cartDivContainer.appendChild(cartMain);*/
+function submitOrder(e) {
+    let inputFields = document.querySelectorAll(".product__quantity");
+    for (let inputField of inputFields) {
+        inputField.value = 0;
+        changeProductQuantity(inputField.name, inputField.value);
+    }
+    alert("Your order has been submitted.")
+}
