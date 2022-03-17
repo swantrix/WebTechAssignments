@@ -193,14 +193,17 @@ function createSashimiGrid(gridDiv) {
         let productImage = createProductImage(sashimiObject);
         productDiv.appendChild(productImage);
 
-        let productDesc = document.createElement('p');
-        let productDescText = document.createTextNode("Ingredients: " + sashimiObject.ingredients);
-        productDesc.appendChild(productDescText);
-        productDiv.appendChild(productDesc);
+        let productDesc = document.createElement('div');
+
+        let productIngr = document.createElement('p');
+        let productIngrText = document.createTextNode("Ingredients: " + sashimiObject.ingredients);
+        productIngr.appendChild(productIngrText);
+        productDesc.appendChild(productIngr);
 
         let productPrice = createProductPrice(sashimiObject)
-        productDiv.appendChild(productPrice);
+        productDesc.appendChild(productPrice);
 
+        productDiv.appendChild(productDesc);
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
@@ -233,21 +236,24 @@ function createNigiriOrMakiGrid(gridDiv, productObjects) {
         let productImage = createProductImage(productObject);
         productDiv.appendChild(productImage);
 
-        let productDesc = document.createElement('p');
-        let productDescText = document.createTextNode("Ingredients: " + productObject.ingredients);
-        productDesc.appendChild(productDescText);
-        productDiv.appendChild(productDesc);
+        let productDesc = document.createElement('div');
+
+        let productIngr = document.createElement('p');
+        let productIngrText = document.createTextNode("Ingredients: " + productObject.ingredients);
+        productIngr.appendChild(productIngrText);
+        productDesc.appendChild(productIngr);
 
         if (productObject.vegetarian) {
             let vegetarian = document.createElement('p');
             let vegetarianText = document.createTextNode("Vegetarian");
             vegetarian.appendChild(vegetarianText);
-            productDiv.appendChild(vegetarian);
+            productDesc.appendChild(vegetarian);
         }
 
         let productPrice = createProductPrice(productObject);
-        productDiv.appendChild(productPrice);
+        productDesc.appendChild(productPrice);
 
+        productDiv.appendChild(productDesc);
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
@@ -280,16 +286,19 @@ function createDessertsGrid(gridDiv) {
         let productImage = createProductImage(dessertObject);
         productDiv.appendChild(productImage);
 
+        let productDesc = document.createElement('div');
+
         if (dessertObject.allergens) {
-            let productDesc = document.createElement('p');
-            let productDescText = document.createTextNode("Allergens: " + dessertObject.allergens);
-            productDesc.appendChild(productDescText);
-            productDiv.appendChild(productDesc);
+            let productAllergen = document.createElement('p');
+            let productAllergenText = document.createTextNode("Allergens: " + dessertObject.allergens);
+            productAllergen.appendChild(productAllergenText);
+            productDesc.appendChild(productAllergen);
         }
         
         let productPrice = createProductPrice(dessertObject);
-        productDiv.appendChild(productPrice);
+        productDesc.appendChild(productPrice);
 
+        productDiv.appendChild(productDesc);
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
@@ -318,25 +327,28 @@ function createDrinksGrid(gridDiv) {
         //Adding product information and image
         let productDiv = document.createElement('div');
         productDiv.classList.add("product__description");
-        
+
         let productImage = createProductImage(drinksObject);
         productDiv.appendChild(productImage);
 
-        let productDesc = document.createElement('p');
-        let productDescText = document.createTextNode("Volume: " + drinksObject.volume);
-        productDesc.appendChild(productDescText);
-        productDiv.appendChild(productDesc);       
+        let productDesc = document.createElement('div');
+
+        let productVolume = document.createElement('p');
+        let productVolumeText = document.createTextNode("Volume: " + drinksObject.volume);
+        productVolume.appendChild(productVolumeText);
+        productDesc.appendChild(productVolume);       
 
         if (!drinksObject.alcoholFree) {
             let alcoholIndicator = document.createElement('p');
             let alcoholText = document.createTextNode("Contains alcohol, 18+");
             alcoholIndicator.appendChild(alcoholText);
-            productDiv.appendChild(alcoholIndicator);
+            productDesc.appendChild(alcoholIndicator);
         }
 
         let productPrice = createProductPrice(drinksObject);
-        productDiv.appendChild(productPrice);
+        productDesc.appendChild(productPrice);
 
+        productDiv.appendChild(productDesc);
         productDisplay.appendChild(productDiv);
 
         //Adding item manipulation
@@ -509,30 +521,52 @@ cartHeading.classList.add("menu__header");
 cartHeading.appendChild(cartHeadingText);
 menuPageMain.appendChild(cartHeading);
 
-let cartItems = document.createElement('p');
+let cartItems = document.createElement('div');
+let emptyCart = document.createElement('p');
 let emptyCartText = document.createTextNode('Your cart is empty');
 cartItems.classList.add("menu__cart");
-cartItems.appendChild(emptyCartText);
+emptyCart.appendChild(emptyCartText);
+cartItems.appendChild(emptyCart);
 menuPageMain.appendChild(cartItems);
+
+let submitButton = createSubmit();
+menuPageMain.appendChild(submitButton);
 
 let contentDivMenu = document.querySelector('#menu-content');
 contentDivMenu.appendChild(menuPageMain);
 
-
+//Cart functionality
 function drawCart() {
-    let cartParagraph = document.querySelector('.menu__cart');
-    let cartText = cartParagraph.childNodes[0];
+    let cartItems = document.querySelector('.menu__cart');
+    deleteChildNodes(cartItems); //Remove all items from cart
 
-    if (!cart.size) {
-        cartParagraph.replaceChild(emptyCartText, cartText); //emptyCartText already exists outside the function
+    if (!cart.size) { //When cart is empty
+        cartItems.appendChild(emptyCart); //emptyCart already exists outside the function
     }
 
-    else {
-        let cartTextNew = document.createTextNode('');
-        //cartParagraph.replaceChild(cartTextNew, cartText);
+    else { //When cart is not empty
+        addItemsToCart(cartItems);
+        
+        let cartPrice = document.createElement('p');
+        let cartPriceText = document.createElement('strong');
+        let cartPriceTextTotal = document.createTextNode('Total price:');
+        cartPriceText.appendChild(cartPriceTextTotal);
+        let cartPriceTotal = document.createTextNode(' €' + totalPrice().toFixed(2));
+        cartPrice.appendChild(cartPriceText);
+        cartPrice.appendChild(cartPriceTotal);
+        cartItems.appendChild(cartPrice);
+    }
 
-        let cartPrice = document.createTextNode('Total price: €' + totalPrice());
-        cartParagraph.replaceChild(cartPrice, cartText);
+    let productFields = document.querySelectorAll(".category-grid__product");
+    for (let productField of productFields) {
+        let inputField = productField.children[2].children[1];
+        if (parseInt(inputField.value) > 0) {
+            productField.classList.add("category-grid__product--selected");
+        }
+        
+        else {
+            productField.classList.remove("category-grid__product--selected");
+        }
     }
 }
 
@@ -548,44 +582,43 @@ function totalPrice () {
     return price;
 }
 
-/*//Cart layout
-var cartMain = document.createElement('section');
-cartMain.setAttribute("id", "cart-section");
-
-var cartTitle = document.createElement('h1');
-cartTitle.setAttribute("id", "cart-title");
-var cartTitleText = document.createTextNode('Your cart:');
-cartTitle.appendChild(cartTitleText);
-cartMain.appendChild(cartTitle);
-
-var cartOrderTable = document.createElement('table');
-cartOrderTable.setAttribute("id", "cart-table");
-cartMain.appendChild(cartOrderTable);
-
-//Fixed header row 
-var fixedHeaderRow = document.createElement("tr");
-fixedHeaderRow.setAttribute("id", "cart-tableRow__fixed");
-
-function colHeaderConstructor (colTitle, span) {
-    var colHead = document.createElement('th');
-    colHead.classList.add("cart-tableCol__header");
-    colHead.setAttribute("rowspan", span);
-    var colHeadText = document.createTextNode(colTitle);
-    colHead.appendChild(colHeadText);
-    fixedHeaderRow.appendChild(colHead);
+function deleteChildNodes(cartItems) {
+    let child = cartItems.lastElementChild;
+    while(child) {
+        cartItems.removeChild(child);
+        child = cartItems.lastElementChild;
+    }
 }
 
-colHeaderConstructor("Product", 3);
-colHeaderConstructor("Unit price", 1);
-colHeaderConstructor("Quantity", 1);
-colHeaderConstructor("Subtotal", 1);
+function addItemsToCart(cartItems) {
+    for (let menuSection of fullMenu.categories) {
+        for (let menuItem of menuSection.foodItems) {
+            if (menuItem.quantity) {
+                let cartItem = document.createElement('p');
+                let cartItemText = document.createTextNode(menuItem.quantity + "x " + menuItem.name);
+                cartItem.appendChild(cartItemText);
+                cartItems.appendChild(cartItem);
+            }
+        }
+    }
+}
 
-cartOrderTable.appendChild(fixedHeaderRow)
+function createSubmit(){
+    let submitButton = document.createElement('button');
+    let submitText = document.createTextNode('Submit you order');
+    submitButton.setAttribute("type", "submit");
+    submitButton.setAttribute("name", "submit-button");
+    submitButton.classList.add("menu__submit");
+    submitButton.appendChild(submitText);
+    submitButton.addEventListener("click", submitOrder, false);
+    return submitButton;
+}
 
-//Footer
-
-
-
-//Implement cart in div container
-var cartDivContainer = document.getElementById('cart-container');
-cartDivContainer.appendChild(cartMain);*/
+function submitOrder(e) {
+    let inputFields = document.querySelectorAll(".product__quantity");
+    for (let inputField of inputFields) {
+        inputField.value = 0;
+        changeProductQuantity(inputField.name, inputField.value);
+    }
+    alert("Your order has been submitted.")
+}
