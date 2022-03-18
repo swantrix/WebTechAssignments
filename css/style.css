@@ -288,10 +288,6 @@ img.product__image {
     background-color: lightsteelblue;
 }
 
-@media (max-width:1200px){
-
-}
-
 @media (max-width: 399px) {
     .product__description {
         flex-direction: column;
