@@ -109,10 +109,10 @@ let drinksMenuSection = new Menusection("Drinks", [pepsi, sprite, sake, kirin, s
 let fullMenu = new Menu([sashimiMenuSection, nigiriMenuSection, makiMenuSection, dessertMenuSection, drinksMenuSection]);
 
 //Menu dictionary used for the cart
-let dict = new Object();
-for (let menuSection of fullMenu.categories) {
+let dict = new Object(); //Dictionary used to link input field names to product objects
+for (let menuSection of fullMenu.categories) { //Creates all dictionary elements
     for (let menuItem of menuSection.foodItems) {
-        createDictionaryEntry(menuItem);
+        createDictionaryEntry(menuItem); 
     }
 }
 
@@ -121,10 +121,10 @@ function createDictionaryEntry (productObject) {
 }
 
 //Creating cart contents
-let cart = new Map();
+let cart = new Map(); //Cart Map object used to store the items currently in the cart
 updateCart();
 
-function updateCart() {
+function updateCart() { // Updates the cart by adding all items with quantity > 0 to it
     cart.clear(); //Clear map to remove all key item pairs. Makes sure items with quantity 0 are not present/removed from the map
     for (let menuSection of fullMenu.categories) {
         for (let menuItem of menuSection.foodItems) {
@@ -133,14 +133,14 @@ function updateCart() {
     }
 }
 
-function addToCart(productObject) {
+function addToCart(productObject) { //Adds an item to the cart
     if (productObject.quantity) {
         cart.set(productObject.name, productObject.quantity);
     }
 }
 
 //Functions needed to create the webpage layout
-function createLinkBoxLink(name, link) {
+function createLinkBoxLink(name, link) { //Creates a link box linking to an id of a category header
     let linkAnchor = document.createElement('a');
     let linkText = document.createTextNode(name);
     linkAnchor.setAttribute('href', link);
@@ -150,7 +150,7 @@ function createLinkBoxLink(name, link) {
     menuLinkBox.appendChild(linkAnchor);
 }
 
-function createCategory(name, id) {
+function createCategory(name, id) { //Creates a category header with an id
     let categoryHeading = document.createElement('h2');
     let categoryText = document.createTextNode(name);
     categoryHeading.classList.add("menu__category-header")
@@ -160,7 +160,7 @@ function createCategory(name, id) {
     menuPageMain.appendChild(categoryHeading);
 }
 
-function createProductGrid() {
+function createProductGrid() { //Creates the layout for the product grid for each section
     let flexDiv = document.createElement('div');
     flexDiv.classList.add("category-container");
 
@@ -173,7 +173,7 @@ function createProductGrid() {
     return gridDiv;
 }
 
-function createSashimiGrid(gridDiv) {
+function createSashimiGrid(gridDiv) { //Creates a sashimi object product layout
     let i = 0;
     while (sashimiMenuSection.foodItems[i]) {
         let sashimiObject = sashimiMenuSection.foodItems[i];
@@ -216,7 +216,7 @@ function createSashimiGrid(gridDiv) {
     }
 }
 
-function createNigiriOrMakiGrid(gridDiv, productObjects) {
+function createNigiriOrMakiGrid(gridDiv, productObjects) { //Creates a nigiri or maki object layout
     let i = 0;
     while (productObjects.foodItems[i]) {
         let productObject = productObjects.foodItems[i];
@@ -266,7 +266,7 @@ function createNigiriOrMakiGrid(gridDiv, productObjects) {
     }
 }
 
-function createDessertsGrid(gridDiv) {
+function createDessertsGrid(gridDiv) { //Creates a desserts object layout
     let i = 0;
     while (dessertMenuSection.foodItems[i]) {
         let dessertObject = dessertMenuSection.foodItems[i];
@@ -311,7 +311,7 @@ function createDessertsGrid(gridDiv) {
     }
 }
 
-function createDrinksGrid(gridDiv) {
+function createDrinksGrid(gridDiv) { //Creates a drinks object layout
     let i = 0;
     while (drinksMenuSection.foodItems[i]) {
         let drinksObject = drinksMenuSection.foodItems[i];
@@ -361,7 +361,7 @@ function createDrinksGrid(gridDiv) {
     }
 }
 
-function createProductHeaderPCS(productObject) {
+function createProductHeaderPCS(productObject) { //Creates a product header for each product item, including number of pieces
     let productHeading = document.createElement('h1');
     let productHeadingText = document.createTextNode(productObject.name + itemNumberString(productObject.numberOfItems));
     productHeading.classList.add("product__header")
@@ -369,7 +369,7 @@ function createProductHeaderPCS(productObject) {
     return productHeading;
 }
 
-function createProductHeader(productObject) {
+function createProductHeader(productObject) { //Creates a product header for each product item
     let productHeading = document.createElement('h1');
     let productHeadingText = document.createTextNode(productObject.name);
     productHeading.classList.add("product__header")
@@ -377,15 +377,15 @@ function createProductHeader(productObject) {
     return productHeading;
 }
 
-function itemNumberString(numberOfItems) {
+function itemNumberString(numberOfItems) { //Formats the number of pieces of a product
     return " (" + numberOfItems + " PCS)";
 }
 
-function imageSource(image) {
+function imageSource(image) { //Adds the images folder 
     return "../images/" + image;
 }
 
-function createProductImage(productObject) {
+function createProductImage(productObject) { //Creates the layout for the product image and adds the image
     let productImage = document.createElement('img');
     productImage.setAttribute("src", imageSource(productObject.imageLocation));
     productImage.setAttribute("alt", productObject.name);
@@ -393,14 +393,14 @@ function createProductImage(productObject) {
     return productImage;
 }
 
-function createProductPrice(productObject) {
+function createProductPrice(productObject) { //Creates the layout for the product price 
     let productPrice = document.createElement('p');
     let productPriceText = document.createTextNode("Price: €" + productObject.price);
     productPrice.appendChild(productPriceText);
     return productPrice;
 }
 
-function createQuantityIncrementer(productObject) {
+function createQuantityIncrementer(productObject) { //Creates the layout of the product quantity input
     let incrementerDiv = document.createElement('div');
     incrementerDiv.classList.add("product__incrementer");
 
@@ -435,8 +435,8 @@ function createQuantityIncrementer(productObject) {
     return incrementerDiv;
 }
 
-//Events
-function decrease(e) {
+//Events for input field functionality
+function decrease(e) { //Eventhandler for pushing the - button
     let inputField = e.target.parentElement.children[1];
     if (parseInt(inputField.value) != 0) {
         inputField.value = parseInt(inputField.value) - 1;
@@ -444,14 +444,14 @@ function decrease(e) {
     }  
 }
 
-function increase(e) {
+function increase(e) { //Eventhandler for pushing the + button
     let inputField = e.target.parentElement.children[1];
     inputField.value = parseInt(inputField.value) + 1;
 
     changeProductQuantity(inputField.name, inputField.value);
 }
 
-function inputFieldChange(e) {
+function inputFieldChange(e) { //Eventhandler for change in inputfield
     let value = parseInt(e.target.value);
     let name = e.target.name;
     if (!(value >= 0) || isNaN(value) || value == -0) {
@@ -461,8 +461,8 @@ function inputFieldChange(e) {
     changeProductQuantity(name, e.target.value);
 }
 
-function changeProductQuantity(name, value) {
-    let productObject = dict[name];
+function changeProductQuantity(name, value) { //Changes the quantity of the product in the corresponding product object
+    let productObject = dict[name]; //Look up the product in the dictionary
     productObject.quantity = parseInt(value);
     updateCart();
     drawCart();
@@ -491,29 +491,24 @@ createLinkBoxLink("Drinks", "#drinks-anchor");
 menuPageMain.appendChild(menuLinkBox);
 
 createCategory("Sashimi", "sashimi-anchor");
-//Add Sashimi menu elements
 let sashimiGridDiv = createProductGrid();
-createSashimiGrid(sashimiGridDiv);
+createSashimiGrid(sashimiGridDiv); //Add Nigiri menu elements
 
 createCategory("Nigiri", "nigiri-anchor");
-//Add Nigiri menu elements
 let nigiriGridDiv = createProductGrid();
-createNigiriOrMakiGrid(nigiriGridDiv, nigiriMenuSection);
+createNigiriOrMakiGrid(nigiriGridDiv, nigiriMenuSection); //Add Nigiri menu elements
 
 createCategory("Maki", "maki-anchor");
-//Add Maki menu elements
-let makiGridDiv = createProductGrid();
-createNigiriOrMakiGrid(makiGridDiv, makiMenuSection);
+let makiGridDiv = createProductGrid(); 
+createNigiriOrMakiGrid(makiGridDiv, makiMenuSection); //Add Maki menu elements
 
 createCategory("Desserts", "desserts-anchor");
-//Add Dessert menu elements
 let dessertsGridDiv = createProductGrid();
-createDessertsGrid(dessertsGridDiv);
+createDessertsGrid(dessertsGridDiv); //Add Dessert menu elements
 
 createCategory("Drinks", "drinks-anchor");
-//Add Drinks menu elements
 let drinksGridDiv = createProductGrid();
-createDrinksGrid(drinksGridDiv);
+createDrinksGrid(drinksGridDiv); //Add Drinks menu elements
 
 let cartHeading = document.createElement('h1');
 let cartHeadingText = document.createTextNode('Your cart');
@@ -521,7 +516,7 @@ cartHeading.classList.add("menu__header");
 cartHeading.appendChild(cartHeadingText);
 menuPageMain.appendChild(cartHeading);
 
-let cartItems = document.createElement('div');
+let cartItems = document.createElement('div'); //Creates cart
 let emptyCart = document.createElement('p');
 let emptyCartText = document.createTextNode('Your cart is empty');
 cartItems.classList.add("menu__cart");
@@ -529,7 +524,7 @@ emptyCart.appendChild(emptyCartText);
 cartItems.appendChild(emptyCart);
 menuPageMain.appendChild(cartItems);
 
-let submitButton = createSubmit();
+let submitButton = createSubmit(); //Creates submit button
 menuPageMain.appendChild(submitButton);
 
 let contentDivMenu = document.querySelector('#menu-content');
@@ -547,6 +542,7 @@ function drawCart() {
     else { //When cart is not empty
         addItemsToCart(cartItems);
         
+        // Calculates total price and adds it underneath the cart
         let cartPrice = document.createElement('p');
         let cartPriceText = document.createElement('strong');
         let cartPriceTextTotal = document.createTextNode('Total price:');
@@ -558,7 +554,7 @@ function drawCart() {
     }
 
     let productFields = document.querySelectorAll(".category-grid__product");
-    for (let productField of productFields) {
+    for (let productField of productFields) { //Highlights the products present in the cart by making the outline red
         let inputField = productField.children[2].children[1];
         if (parseInt(inputField.value) > 0) {
             productField.classList.add("category-grid__product--selected");
@@ -570,7 +566,7 @@ function drawCart() {
     }
 }
 
-function totalPrice () {
+function totalPrice () { //Calculates the total price of the items in the cart
     let price = 0;
     for (let menuSection of fullMenu.categories) {
         for (let menuItem of menuSection.foodItems) {
@@ -582,7 +578,7 @@ function totalPrice () {
     return price;
 }
 
-function deleteChildNodes(cartItems) {
+function deleteChildNodes(cartItems) { //Removes all items from the cart
     let child = cartItems.lastElementChild;
     while(child) {
         cartItems.removeChild(child);
@@ -590,7 +586,7 @@ function deleteChildNodes(cartItems) {
     }
 }
 
-function addItemsToCart(cartItems) {
+function addItemsToCart(cartItems) { //Adds items to cart at the bottom of the page
     for (let menuSection of fullMenu.categories) {
         for (let menuItem of menuSection.foodItems) {
             if (menuItem.quantity) {
@@ -603,7 +599,7 @@ function addItemsToCart(cartItems) {
     }
 }
 
-function createSubmit(){
+function createSubmit() { //Creates submit button
     let submitButton = document.createElement('button');
     let submitText = document.createTextNode('Submit your order');
     submitButton.setAttribute("type", "submit");
@@ -614,7 +610,7 @@ function createSubmit(){
     return submitButton;
 }
 
-function submitOrder(e) {
+function submitOrder(e) { //Eventhandler for pressing the submit button
     let inputFields = document.querySelectorAll(".product__quantity");
     for (let inputField of inputFields) {
         inputField.value = 0;
