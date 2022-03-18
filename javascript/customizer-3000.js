@@ -1,3 +1,4 @@
+//Sets some variables to the appropriate HTML elements
 const header = document.querySelector("header");
 const footer = document.querySelector("footer");
 const body = document.querySelector("body");
@@ -10,17 +11,16 @@ const customizer = document.querySelector(".footer__customizer")
 const targetButton = document.getElementById("footer__customizer__element-target-selector")
 const changeButton = document.getElementById("footer__customizer__change-selector")
 const applyButton = document.getElementById("footer__customizer__apply-button");
-let changeValueButton = undefined; /*will be defined by the time it appears in the DOM*/
+let changeValueButton = undefined; //is assigned the appropriate HTML element dynamically before this variable is used
 
-
-/*these represent the object which is currently selected*/
+//these represent the target which is currently selected and the requested customisations
 let selectedTarget = undefined;
 let selectedChangeString = undefined;
 let selectedChangeValue = undefined;
 
-/*creates possible target options*/
+//creates possible target options
 
-    /*checks if Target Option already exists and if not, creates it.*/
+    //checks if Target Option already exists and if not, creates it.
     function createTargetOption(targetString){
         let alreadyExist = false;
         let targetSelectorChildren = document.getElementById("footer__customizer__element-target-selector").children
@@ -38,7 +38,7 @@ let selectedChangeValue = undefined;
         }
     }
 
-    /*since body always exists, always creating this option is safe*/
+    //since body always exists, always creating this option is safe
     createTargetOption("body")
 
     function optionCreator(toCheck){
@@ -72,7 +72,7 @@ let selectedChangeValue = undefined;
 
     body.querySelectorAll("*").forEach(x => optionCreator(x))
 
-
+//Adds functionality for the first button, the target selector
 targetButton.addEventListener("input", handleTargetSelect);
 
 function handleTargetSelect(){
@@ -103,7 +103,7 @@ function handleTargetSelect(){
    }
 }
 
-/*returns a <div> with all the appropriate children given the chosen change: background_color, text_color or font_size*/
+//returns a <div> HTML element with all the appropriate children given the chosen change: background_color, text_color or font_size
 function createChangeValueSelector(change) {
     let changeValueSelectorContainer = document.createElement("div");
     let changeValueSelectorInput = document.createElement("input");
@@ -142,10 +142,12 @@ function createChangeValueSelector(change) {
 }
 
 
-/*functionality for the change selector*/
+//functionality for the change selector, creating a Change Value Selector and setting the Change Type in Javascript
 changeButton.addEventListener("input", handleChangeSelect);
 
 function handleChangeSelect(){
+    /*first, deleted the current change value selector if it exists,
+    * then creates and adds a new change value selector, that is appropriate for the requested change*/
     selectedChangeString = changeButton.value
 
     switch (changeButton.value){
@@ -171,13 +173,13 @@ function handleChangeSelect(){
     }
 }
 
-/*functionality for the change value selector*/
+//functionality for the change value selector itself
 function handleChangeValueSelect(){
     selectedChangeValue = changeValueButton.value
 }
 
 
-/*functionality for the apply button*/
+//functionality for the apply button
 applyButton.addEventListener("click", applyChange)
 
 function applyChange(){
@@ -206,7 +208,7 @@ function applyChange(){
 }
 
 
-/*provides default options when the page loads*/
+//provides default options when the page loads, prevents a boat load of bugs
 targetButton.value = "header";
 handleTargetSelect();
 changeButton.value = "text_color";
